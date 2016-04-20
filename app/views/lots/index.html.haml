@@ -4,7 +4,6 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:number)
       %th= model_class.human_attribute_name(:block)
       %th= model_class.human_attribute_name(:stage)
@@ -17,7 +16,6 @@
   %tbody
     - @lots.each do |lot|
       %tr
-        %td= link_to lot.id, lot_path(lot)
         %td= lot.number
         %td= lot.block
         %td= lot.stage
@@ -27,6 +25,7 @@
         %td= lot.perimeter_lengths
         %td= lot.active
         %td
+          = link_to t('.show', :default => t("helpers.links.show")), lot_path(lot), :class => 'btn btn-primary btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_lot_path(lot), :class => 'btn btn-default btn-xs'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), lot_path(lot), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
 
