@@ -25,6 +25,6 @@
   %b Active:
   = @lot.active
 
-= link_to 'Edit', edit_lot_path(@lot) if can? :update, lot
+= link_to 'Edit', edit_lot_path(@lot) if can? :update, @lot
 \|
 = link_to 'Back', lots_path
