@@ -1,0 +1,14 @@
+.navbar.navbar-default.navbar-static-top
+  .container
+    %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to 'SACC', root_path, class: 'navbar-brand'
+    .navbar-collapse.collapse.navbar-responsive-collapse
+      %ul.nav.navbar-nav
+      %p.navbar-text.navbar-right
+        = link_to current_user.name, current_user
+        = link_to destroy_user_session_path, method: :delete do
+          %span{class: 'fa fa-sign-out'}
+
