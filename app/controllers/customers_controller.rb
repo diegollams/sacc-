@@ -4,7 +4,11 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
+    if current_user.admin?
+      @customers = Customer.all
+    elsif current_user.salesman?
+      @customers = Customer.where(user: current_user)
+    end
   end
 
   # GET /customers/1
