@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  block: MyString
+  stage: MyString
+  area: 9.99
+  status: MyString
+  salesman_id: MyString
+  perimeter_points: MyString
+  perimeter_lengths: MyString
+  active: false
+
+two:
+  number: MyString
+  block: MyString
+  stage: MyString
+  area: 9.99
+  status: MyString
+  salesman_id: MyString
+  perimeter_points: MyString
+  perimeter_lengths: MyString
+  active: false

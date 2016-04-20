@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Number:
+  = @lot.number
+%p
+  %b Block:
+  = @lot.block
+%p
+  %b Stage:
+  = @lot.stage
+%p
+  %b Area:
+  = @lot.area
+%p
+  %b Status:
+  = @lot.status
+%p
+  %b Salesman:
+  = @lot.salesman_id
+%p
+  %b Perimeter points:
+  = @lot.perimeter_points
+%p
+  %b Perimeter lengths:
+  = @lot.perimeter_lengths
+%p
+  %b Active:
+  = @lot.active
+
+= link_to 'Edit', edit_lot_path(@lot)
+\|
+= link_to 'Back', lots_path
