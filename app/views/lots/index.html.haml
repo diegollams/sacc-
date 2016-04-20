@@ -27,8 +27,8 @@
         %td= lot.perimeter_lengths
         %td= lot.active
         %td= link_to 'Show', lot
-        %td= link_to 'Edit', edit_lot_path(lot)
-        %td= link_to 'Destroy', lot, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td= link_to 'Edit', edit_lot_path(lot) if can? :update, lot
+        %td= link_to 'Destroy', lot, :method => :delete, :data => { :confirm => 'Are you sure?' } if can? :destroy, lot
 
 %br
 

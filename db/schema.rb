@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20160420050623) do
     t.string   "stage"
     t.decimal  "area"
     t.string   "status"
-    t.integer  "salesman_id"
     t.string   "perimeter_points"
     t.string   "perimeter_lengths"
     t.boolean  "active",            default: false
