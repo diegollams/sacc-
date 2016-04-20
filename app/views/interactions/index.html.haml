@@ -1,0 +1,26 @@
+- model_class = Interaction
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize,customer: @customer.fullname
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:kind)
+      %th= model_class.human_attribute_name(:observation)
+      %th= model_class.human_attribute_name(:date)
+      %th= model_class.human_attribute_name(:time)
+      %th= model_class.human_attribute_name(:customer_id)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @interactions.each do |interaction|
+      %tr
+        %td= interaction.kind
+        %td= interaction.observation
+        %td= interaction.date
+        %td= interaction.time
+        %td= link_to interaction.customer.fullname,customers_path(interaction.customer)
+        %td
+          = link_to t('.show', :default => t("helpers.links.show")), interaction_path(interaction), :class => 'btn btn-primary btn-xs'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_interaction_path(interaction), :class => 'btn btn-default btn-xs'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), interaction_path(interaction,customer_id: interaction.customer_id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+
+= link_to t('.new', :default => t("helpers.links.new")), new_interaction_path, :class => 'btn btn-primary'

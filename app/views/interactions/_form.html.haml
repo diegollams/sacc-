@@ -1,0 +1,8 @@
+= simple_form_for @interaction, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :kind
+  = f.input :observation
+  = f.input :date
+  = f.input :time
+  = f.input :customer_id, input_html: {value: params[:customer_id]},as: :hidden
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), interactions_path(customer_id: params[:customer_id]), :class => 'btn btn-default'
