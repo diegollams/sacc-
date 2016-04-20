@@ -3,5 +3,6 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,:lockable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :name,presence: true
+  validates :name, presence: true
+  # has_many :lots, :class_name => "Lot", :foreign_key => "salesman_id"
 end
