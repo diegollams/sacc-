@@ -29,6 +29,7 @@ gem 'devise-bootstrap-views'
 gem 'simple_form'
 gem 'haml-rails'
 
+
 gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password

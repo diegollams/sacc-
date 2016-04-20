@@ -15,3 +15,9 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+var loadToolptip = function(){
+    $('[data-toggle="tooltip"]').tooltip();
+};
+
+$(document).on('page:load ready page:change', loadToolptip);

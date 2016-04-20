@@ -28,6 +28,11 @@
         %a.navbar-brand(href="/") Sacc
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
+          -if current_user
+            %p.navbar-text.navbar-right
+              = current_user.name
+              = link_to destroy_user_session_path, method: :delete,data: { 'toggle' => 'tooltip' ,'placement' => 'bottom' },'title' => t('sign_out') do
+                %span{class: 'fa fa-sign-out'}
     .container
       .row
         = bootstrap_flash
