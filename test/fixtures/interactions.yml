@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kind: MyString
+  observation: MyText
+  date: 2016-04-20
+  time: 2016-04-20 10:25:54
+  customer_id: 
+
+two:
+  kind: MyString
+  observation: MyText
+  date: 2016-04-20
+  time: 2016-04-20 10:25:54
+  customer_id: 

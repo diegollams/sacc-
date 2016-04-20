@@ -7,9 +7,12 @@
     = link_to 'SACC', root_path, class: 'navbar-brand'
     .navbar-collapse.collapse.navbar-responsive-collapse
       %ul.nav.navbar-nav
-        %li= link_to 'Lots', lots_path
-      %p.navbar-text.navbar-right
-        = link_to current_user.name, current_user
-        = link_to destroy_user_session_path, method: :delete  ,data: { 'toggle' => 'tooltip' ,'placement' => 'bottom' },'title' => t('sign_out') do
-          %span{class: 'fa fa-sign-out'}
+        %li= link_to Lot.model_name.human.pluralize.titleize,lots_path
+        %li= link_to User.model_name.human.pluralize.titleize,users_path
+        %li= link_to Customer.model_name.human.pluralize.titleize,customers_path
+      -if current_user
+        %p.navbar-text.navbar-right
+          = link_to current_user.name, current_user
+          = link_to destroy_user_session_path, method: :delete  ,data: { 'toggle' => 'tooltip' ,'placement' => 'bottom' },'title' => t('sign_out') do
+            %span{class: 'fa fa-sign-out'}
 

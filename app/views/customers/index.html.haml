@@ -5,9 +5,7 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:register_date)
-      %th= model_class.human_attribute_name(:first_name)
-      %th= model_class.human_attribute_name(:middle_name)
-      %th= model_class.human_attribute_name(:last_name)
+      %th= model_class.human_attribute_name(:fullname)
       %th= model_class.human_attribute_name(:marital_status)
       %th= model_class.human_attribute_name(:email)
       %th= model_class.human_attribute_name(:gender)
@@ -19,9 +17,7 @@
     - @customers.each do |customer|
       %tr
         %td= customer.register_date
-        %td= customer.first_name
-        %td= customer.middle_name
-        %td= customer.last_name
+        %td= customer.fullname
         %td= customer.marital_status
         %td= customer.email
         %td= customer.gender
