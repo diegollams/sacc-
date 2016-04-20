@@ -1,0 +1,13 @@
+= simple_form_for @lot, html: { class: 'form-horizontal' } do |f|
+
+  = f.input :number
+  = f.input :block
+  = f.input :stage
+  = f.input :area
+  = f.input :status
+  = f.input :perimeter_points
+  = f.input :perimeter_lengths
+  = f.input :active
+
+  = f.button :submit, class: 'btn-primary'
+  = link_to t('.cancel', default: t("helpers.links.cancel")), lots_path, class: 'btn btn-default'

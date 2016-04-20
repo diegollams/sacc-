@@ -4,7 +4,7 @@
     %meta{charset: "utf-8"}
     %meta{'http-equiv' => "X-UA-Compatible", content: "IE=Edge,chrome=1"}
     %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : "SACC"
+    %title SACC Login
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
     = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
@@ -18,11 +18,10 @@
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
 
 
-    = render partial: 'common/navbar'
-
+  %body
     .container
       .row
-        = bootstrap_flash
-        = yield
+        .col-md-4.col-md-offset-4
+          = bootstrap_flash
+          = yield
 
-    = render partial: 'common/footer'

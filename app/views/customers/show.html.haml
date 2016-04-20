@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Register date:
+  = @customer.register_date
+%p
+  %b First name:
+  = @customer.first_name
+%p
+  %b Middle name:
+  = @customer.middle_name
+%p
+  %b Last name:
+  = @customer.last_name
+%p
+  %b Marital status:
+  = @customer.marital_status
+%p
+  %b Email:
+  = @customer.email
+%p
+  %b Gender:
+  = @customer.gender
+%p
+  %b Spouse:
+  = @customer.spouse
+%p
+  %b Zipcode:
+  = @customer.zipcode
+%p
+  %b User:
+  = @customer.user
+
+= link_to 'Edit', edit_customer_path(@customer)
+\|
+= link_to 'Back', customers_path
