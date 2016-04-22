@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   validates :name,:email,presence: true
 
+  has_many :interactions,through: :customers
   royce_roles %w[ admin staff salesman ]
   # has_many :lots, :class_name => "Lot", :foreign_key => "salesman_id"
 end

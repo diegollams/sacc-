@@ -5,29 +5,25 @@
   %thead
     %tr
       %th= model_class.human_attribute_name(:register_date)
-      %th= model_class.human_attribute_name(:first_name)
-      %th= model_class.human_attribute_name(:middle_name)
-      %th= model_class.human_attribute_name(:last_name)
+      %th= model_class.human_attribute_name(:fullname)
       %th= model_class.human_attribute_name(:marital_status)
       %th= model_class.human_attribute_name(:email)
       %th= model_class.human_attribute_name(:gender)
       %th= model_class.human_attribute_name(:spouse)
       %th= model_class.human_attribute_name(:zipcode)
-      %th= model_class.human_attribute_name(:user_id)
+      %th= model_class.human_attribute_name(:salesman)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @customers.each do |customer|
       %tr
         %td= customer.register_date
-        %td= customer.first_name
-        %td= customer.middle_name
-        %td= customer.last_name
+        %td= customer.fullname
         %td= customer.marital_status
         %td= customer.email
         %td= customer.gender
         %td= customer.spouse
         %td= customer.zipcode
-        %td= customer.user_id
+        %td= customer.user.name
         %td
           = link_to t('.show', :default => t("helpers.links.show")), customer_path(customer), :class => 'btn btn-primary btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_customer_path(customer), :class => 'btn btn-default btn-xs'

@@ -20,5 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
   sign_out: "Sign out"
+  interactions:
+    new:
+      message: "New Interaction"
+    index:
+      title: "Interactions with %{customer}"
