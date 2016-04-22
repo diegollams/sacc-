@@ -26,7 +26,7 @@
         %td= lot.active
         %td
           = link_to t('.show', :default => t("helpers.links.show")), lot_path(lot), :class => 'btn btn-primary btn-xs'
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_lot_path(lot), :class => 'btn btn-default btn-xs'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), lot_path(lot), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_lot_path(lot), :class => 'btn btn-default btn-xs' if can? :update, lot
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), lot_path(lot), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger' if can? :destroy, lot
 
 = link_to t('.new', :default => t("helpers.links.new")), new_lot_path, :class => 'btn btn-primary'

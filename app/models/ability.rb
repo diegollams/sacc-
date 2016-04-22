@@ -6,7 +6,7 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
     if user.salesman?
-      can :manage, :all
+      can :manage, Lot
     else
       can :read, :all
     end
