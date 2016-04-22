@@ -21,12 +21,12 @@ gem 'simple_form'
 gem 'haml-rails'
 
 gem 'dotenv-rails'
-1
 gem 'rails_12factor', group: :production
 
 # gem 'bcrypt', '~> 3.1.7'
 
-gem 'puma'
+# gem 'puma'
+# gem 'unicorn'
 
 # gem 'capistrano-rails', group: :development
 
@@ -46,6 +46,6 @@ group :development do
   gem 'capistrano-rvm',     require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
+  # gem 'capistrano3-puma',   require: false
   gem 'airbrussh',          require: false
 end
