@@ -1,5 +1,5 @@
 class Customer < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :salesman, :class_name => "User", :foreign_key => "salesman_id"
   has_many :interactions
 
   enum marital_status: [ :single, :married ]

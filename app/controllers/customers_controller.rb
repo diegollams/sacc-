@@ -7,7 +7,7 @@ class CustomersController < ApplicationController
     if current_user.admin?
       @customers = Customer.all
     elsif current_user.salesman?
-      @customers = Customer.where(user: current_user)
+      @customers = current_user.customers # this could be a method in the model
     end
   end
 

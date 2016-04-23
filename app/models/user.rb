@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
 
   validates :name, :email, presence: true
 
-  has_many :customers
+  has_many :customers, class_name: 'Customer', foreign_key: 'salesman_id'
   has_many :interactions, through: :customers
 end
