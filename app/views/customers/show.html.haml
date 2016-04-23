@@ -41,7 +41,7 @@
 %p
   %strong= model_class.human_attribute_name(:salesman) + ':'
   %br
-  = @customer.salesman.name
+  = @customer.salesman_name || 'N/A'
 
 = link_to t('interactions.new.message'), new_interaction_path(customer_id: @customer.id), :class => 'btn btn-default'
 = link_to t('.back', :default => t("helpers.links.back")), customers_path, :class => 'btn btn-default'

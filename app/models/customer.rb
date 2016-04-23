@@ -5,6 +5,7 @@ class Customer < ActiveRecord::Base
   enum marital_status: [ :single, :married ]
   enum gender: [ :male, :female ]
 
+  delegate :name, to: :salesman, prefix: true, allow_nil: true
 
   def fullname
     [first_name, middle_name, last_name].join(" ")
