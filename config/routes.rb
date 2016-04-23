@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+
+  devise_for :users
+
   resources :interactions
   resources :lots
   resources :customers
-  devise_for :users
   resources :users
+  get 'dashboard/index'
 
-
-  root 'users#index'
+  root 'dashboard#index'
 
 end

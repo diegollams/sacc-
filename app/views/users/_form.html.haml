@@ -3,6 +3,8 @@
   = f.input :email
   = f.input :name
   = f.input :phone
-  = f.input :role_ids, collection: Royce::Role.all
+  = f.input :password
+  = f.input :password_confirmation
+  = f.input :role_ids, collection: Royce::Role.all, label: 'Roles'
   = f.button :submit, :class => 'btn-primary'
   = link_to t('.cancel', default: t("helpers.links.cancel")), users_path, class: 'btn btn-default'
