@@ -37,3 +37,5 @@ en:
       message: "New Quotation"
     index:
       message: "All quotations"
+  customer:
+    info: "Personal Information"

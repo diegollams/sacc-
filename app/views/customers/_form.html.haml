@@ -10,4 +10,4 @@
   = f.input :spouse
   = f.input :zipcode
   = f.button :submit, :class => 'btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn btn-default'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), request.referrer, :class => 'btn btn-default'

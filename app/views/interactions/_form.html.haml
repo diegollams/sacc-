@@ -5,4 +5,4 @@
   = f.input :time
   = f.input :customer_id, input_html: {value: @customer.id},as: :hidden
   = f.button :submit, :class => 'btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), interactions_path(customer_id: @customer.id), :class => 'btn btn-default'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), request.referrer, :class => 'btn btn-default'

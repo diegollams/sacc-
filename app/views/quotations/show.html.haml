@@ -1,6 +1,6 @@
 - model_class = Quotation
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h1=t '.title', default: model_class.model_name.human.titleize
 
 %p
   %strong= model_class.human_attribute_name(:customer_id) + ':'
@@ -16,6 +16,6 @@
   = @quotation.price
 
 
-= link_to t('.back', :default => t("helpers.links.back")), quotations_path(customer_id: @quotation.customer_id), :class => 'btn btn-default'
-= link_to t('.edit', :default => t("helpers.links.edit")), edit_quotation_path(@quotation), :class => 'btn btn-default'
-= link_to t('.destroy', :default => t("helpers.links.destroy")), quotation_path(@quotation), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+= link_to t('.back', default: t('helpers.links.back')), request.referrer, class: 'btn btn-default'
+= link_to t('.edit', default: t('helpers.links.edit')), edit_quotation_path(@quotation), class: 'btn btn-default'
+= link_to t('.destroy', default: t('helpers.links.destroy')), quotation_path(@quotation), method: 'delete', data: { confirm: t('.confirm', default: t('helpers.links.confirm', default: 'Are you sure?')) }, class: 'btn btn-danger'

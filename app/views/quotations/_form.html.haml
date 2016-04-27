@@ -3,4 +3,4 @@
   = f.input :square_meters
   = f.input :price
   = f.button :submit, :class => 'btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), quotations_path(customer_id: @customer.id), :class => 'btn btn-default'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), request.referrer, :class => 'btn btn-default'

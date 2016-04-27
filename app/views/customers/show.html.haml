@@ -2,64 +2,66 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.titleize
 
-%p
-  %strong= model_class.human_attribute_name(:register_date) + ':'
-  %br
-  = @customer.register_date
-%p
-  %strong= model_class.human_attribute_name(:first_name) + ':'
-  %br
-  = @customer.first_name
-%p
-  %strong= model_class.human_attribute_name(:middle_name) + ':'
-  %br
-  = @customer.middle_name
-%p
-  %strong= model_class.human_attribute_name(:last_name) + ':'
-  %br
-  = @customer.last_name
-%p
-  %strong= model_class.human_attribute_name(:marital_status) + ':'
-  %br
-  = @customer.marital_status
-%p
-  %strong= model_class.human_attribute_name(:email) + ':'
-  %br
-  = @customer.email
-%p
-  %strong= model_class.human_attribute_name(:gender) + ':'
-  %br
-  = @customer.gender
-%p
-  %strong= model_class.human_attribute_name(:spouse) + ':'
-  %br
-  = @customer.spouse
-%p
-  %strong= model_class.human_attribute_name(:zipcode) + ':'
-  %br
-  = @customer.zipcode
-%p
-  %strong= model_class.human_attribute_name(:salesman) + ':'
-  %br
-  = @customer.salesman_name || 'N/A'
-%hr
-%p
-  %strong= Appointment.human_attribute_name(:salesman) + ':'
-  %br
-  = link_to t('appointments.new.message'), new_appointment_path(customer_id: @customer.id), :class => 'btn btn-primary'
-  = link_to t('appointments.index.message'), appointments_path(customer_id: @customer.id), :class => 'btn btn-default'
-%hr
-%p
-  %strong= Interaction.human_attribute_name(:salesman) + ':'
-  %br
-  = link_to t('interactions.new.message'), new_interaction_path(customer_id: @customer.id), :class => 'btn btn-primary'
-  = link_to t('interactions.index.message'), interactions_path(customer_id: @customer.id), :class => 'btn btn-default'
-%hr
-%p
-  %strong= Quotation.human_attribute_name(:salesman) + ':'
-  %br
-  = link_to t('quotations.new.message'), new_quotation_path(customer_id: @customer.id), :class => 'btn btn-primary'
-  = link_to t('quotations.index.message'), quotations_path(customer_id: @customer.id), :class => 'btn btn-default'
-= link_to t('.back', :default => t("helpers.links.back")), customers_path, :class => 'btn btn-default'
-= link_to t('.edit', :default => t("helpers.links.edit")), edit_customer_path(@customer), :class => 'btn btn-default'
-= link_to t('.destroy', :default => t("helpers.links.destroy")), customer_path(@customer), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+%ul.nav.nav-tabs{:role => 'tablist'}
+  %li.active{:role => 'presentation'}
+    %a{'aria-controls' => 'home', 'data-toggle' => "tab", href: "#info", role: 'tab'}= t 'customer.info'
+  %li{:role => "presentation"}
+    %a{'aria-controls' => 'profile', 'data-toggle' => 'tab', href: '#appointments', role: 'tab'}= Appointment.model_name.human
+  %li{:role => "presentation"}
+    %a{'aria-controls' => 'messages', 'data-toggle' => 'tab', href: '#interactions', role: 'tab'}=  Interaction.model_name.human
+  %li{:role => "presentation"}
+    %a{'aria-controls' => 'settings', 'data-toggle' => 'tab', href: '#quotations', role: 'taßb'}= Quotation.model_name.human
+.tab-content
+  #info.tab-pane.fade.in.active{role: 'tabpanel'}
+    %p
+      %strong= model_class.human_attribute_name(:register_date) + ':'
+      %br
+      = @customer.register_date
+    %p
+      %strong= model_class.human_attribute_name(:first_name) + ':'
+      %br
+      = @customer.first_name
+    %p
+      %strong= model_class.human_attribute_name(:middle_name) + ':'
+      %br
+      = @customer.middle_name
+    %p
+      %strong= model_class.human_attribute_name(:last_name) + ':'
+      %br
+      = @customer.last_name
+    %p
+      %strong= model_class.human_attribute_name(:marital_status) + ':'
+      %br
+      = @customer.marital_status
+    %p
+      %strong= model_class.human_attribute_name(:email) + ':'
+      %br
+      = @customer.email
+    %p
+      %strong= model_class.human_attribute_name(:gender) + ':'
+      %br
+      = @customer.gender
+    %p
+      %strong= model_class.human_attribute_name(:spouse) + ':'
+      %br
+      = @customer.spouse
+    %p
+      %strong= model_class.human_attribute_name(:zipcode) + ':'
+      %br
+      = @customer.zipcode
+    %p
+      %strong= model_class.human_attribute_name(:salesman) + ':'
+      %br
+      = @customer.salesman_name || 'N/A'
+  #appointments.tab-pane.fade{role: 'tabpanel'}
+    = link_to t('appointments.new.message'), new_appointment_path(customer_id: @customer.id), class: 'btn btn-primary'
+    = link_to t('appointments.index.message'), appointments_path(customer_id: @customer.id), class: 'btn btn-default'
+  #interactions.tab-pane.fade{role: 'tabpanel'}
+    = link_to t('interactions.new.message'), new_interaction_path(customer_id: @customer.id), class: 'btn btn-primary'
+    = link_to t('interactions.index.message'), interactions_path(customer_id: @customer.id), class: 'btn btn-default'
+  #quotations.tab-pane.fade{role: 'tabpanel'}
+    = link_to t('quotations.new.message'), new_quotation_path(customer_id: @customer.id), class: 'btn btn-primary'
+    = link_to t('quotations.index.message'), quotations_path(customer_id: @customer.id), class: 'btn btn-default'
+= link_to t('.back', :default => t('helpers.links.back')), request.referrer, class: 'btn btn-default'
+= link_to t('.edit', :default => t('helpers.links.edit')), edit_customer_path(@customer), class: 'btn btn-default'
+= link_to t('.destroy', :default => t('helpers.links.destroy')), customer_path(@customer), method: 'delete', data: { confirm: t('.confirm', default: t('helpers.links.confirm', default: 'Are you sure?')) }, class: 'btn btn-danger'
