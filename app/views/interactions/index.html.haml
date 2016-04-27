@@ -17,7 +17,7 @@
         %td= interaction.observation
         %td= interaction.date
         %td= interaction.time
-        %td= link_to interaction.customer.fullname,customers_path(interaction.customer)
+        %td= link_to interaction.customer.fullname,customer_path(interaction.customer)
         %td
           = link_to t('.show', :default => t("helpers.links.show")), interaction_path(interaction), :class => 'btn btn-primary btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_interaction_path(interaction,customer_id: interaction.customer_id), :class => 'btn btn-default btn-xs'

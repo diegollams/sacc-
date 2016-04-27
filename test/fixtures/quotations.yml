@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 
+  square_meters: 9.99
+  price: 9.99
+
+two:
+  customer_id: 
+  square_meters: 9.99
+  price: 9.99

@@ -32,3 +32,8 @@ en:
       message: "New appointment"
     index:
       message: "All apointments"
+  quotations:
+    new:
+      message: "New Quotation"
+    index:
+      message: "All quotations"

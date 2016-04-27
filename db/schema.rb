@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426213254) do
+ActiveRecord::Schema.define(version: 20160427133456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(version: 20160426213254) do
     t.datetime "updated_at",                        null: false
   end
 
+  create_table "quotations", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.decimal  "square_meters"
+    t.decimal  "price"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "quotations", ["customer_id"], name: "index_quotations_on_customer_id", using: :btree
+
   create_table "royce_connector", force: :cascade do |t|
     t.integer  "roleable_id",   null: false
     t.string   "roleable_type", null: false
@@ -115,4 +125,5 @@ ActiveRecord::Schema.define(version: 20160426213254) do
   add_foreign_key "appointments", "customers"
   add_foreign_key "customers", "users", column: "salesman_id"
   add_foreign_key "interactions", "customers"
+  add_foreign_key "quotations", "customers"
 end
