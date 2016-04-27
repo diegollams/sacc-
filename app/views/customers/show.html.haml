@@ -42,8 +42,19 @@
   %strong= model_class.human_attribute_name(:salesman) + ':'
   %br
   = @customer.salesman_name || 'N/A'
+%hr
+%p
+  %strong= Appointment.human_attribute_name(:salesman) + ':'
+  %br
+  = link_to t('appointments.new.message'), new_appointment_path(customer_id: @customer.id), :class => 'btn btn-primary'
+  = link_to t('appointments.index.message'), appointments_path(customer_id: @customer.id), :class => 'btn btn-default'
+%hr
+%p
+  %strong= Interaction.human_attribute_name(:salesman) + ':'
+  %br
+  = link_to t('interactions.new.message'), new_interaction_path(customer_id: @customer.id), :class => 'btn btn-primary'
+  = link_to t('interactions.index.message'), interactions_path(customer_id: @customer.id), :class => 'btn btn-default'
 
-= link_to t('interactions.new.message'), new_interaction_path(customer_id: @customer.id), :class => 'btn btn-default'
 = link_to t('.back', :default => t("helpers.links.back")), customers_path, :class => 'btn btn-default'
 = link_to t('.edit', :default => t("helpers.links.edit")), edit_customer_path(@customer), :class => 'btn btn-default'
 = link_to t('.destroy', :default => t("helpers.links.destroy")), customer_path(@customer), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'

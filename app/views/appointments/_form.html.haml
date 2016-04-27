@@ -1,0 +1,7 @@
+= simple_form_for @appointment, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :date
+  = f.input :time
+  = f.input :place
+  = f.input :customer_id, input_html: {value: @customer.id},as: :hidden
+  = f.button :submit, :class => 'btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), appointments_path(customer_id: params[:customer_id]), :class => 'btn btn-default'

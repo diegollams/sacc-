@@ -1,7 +1,7 @@
 class Customer < ActiveRecord::Base
   belongs_to :salesman, :class_name => "User", :foreign_key => "salesman_id"
   has_many :interactions
-
+  has_many :appointments
   enum marital_status: [ :single, :married ]
   enum gender: [ :male, :female ]
 

@@ -26,3 +26,9 @@ en:
       message: "New Interaction"
     index:
       title: "Interactions with %{customer}"
+      message: "All interactions"
+  appointments:
+    new:
+      message: "New appointment"
+    index:
+      message: "All apointments"
