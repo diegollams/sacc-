@@ -4,7 +4,7 @@
 
 %ul.nav.nav-tabs{:role => 'tablist'}
   %li.active{:role => 'presentation'}
-    %a{'aria-controls' => 'home', 'data-toggle' => "tab", href: "#info", role: 'tab'}= t 'customer.info'
+    %a{'aria-controls' => 'home', 'data-toggle' => "tab", href: "#info", role: 'tab'}= t 'customers.info'
   %li{:role => "presentation"}
     %a{'aria-controls' => 'profile', 'data-toggle' => 'tab', href: '#appointments', role: 'tab'}= Appointment.model_name.human
   %li{:role => "presentation"}

@@ -28,14 +28,20 @@ en:
       title: "Interactions with %{customer}"
       message: "All interactions"
   appointments:
+    status:
+      upcoming: "Upcoming"
     new:
       message: "New appointment"
     index:
       message: "All apointments"
+    today: "Today"
+    upcoming: "Upcoming"
+    past: "Past"
+    all: "All"
   quotations:
     new:
       message: "New Quotation"
     index:
       message: "All quotations"
-  customer:
+  customers:
     info: "Personal Information"

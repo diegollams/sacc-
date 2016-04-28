@@ -1,2 +1,10 @@
-%h1 Dashboard#index
-%p Find me in app/views/dashboard/index.html.haml
+%ul.nav.nav-tabs{:role => 'tablist'}
+  %li.active{:role => 'presentation'}
+    %a{'aria-controls' => 'home', 'data-toggle' => "tab", href: '#today', role: 'tab'}= t 'appointments.today'
+  %li{:role => "presentation"}
+    %a{'aria-controls' => 'profile', 'data-toggle' => 'tab', href: '#upcoming', role: 'tab'}= t 'appointments.upcoming'
+  %li{:role => "presentation"}
+    %a{'aria-controls' => 'messages', 'data-toggle' => 'tab', href: '#past', role: 'tab'}=  t 'appointments.past'
+  %li{:role => "presentation"}
+    %a{'aria-controls' => 'messages', 'data-toggle' => 'tab', href: '#all', role: 'tab'}=  t 'appointments.all'
+.tab-content
