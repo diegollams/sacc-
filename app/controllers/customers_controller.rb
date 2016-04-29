@@ -12,14 +12,10 @@ class CustomersController < ApplicationController
 
   def new
     @customer = Customer.new
-    @genders = Customer.genders
-    @marital_statuses = Customer.marital_statuses
   end
 
   def edit
     @customer = Customer.find(params[:id])
-    @genders = Customer.genders
-    @marital_statuses = Customer.marital_statuses
   end
 
   def create
@@ -38,8 +34,6 @@ class CustomersController < ApplicationController
 
   def update
     respond_to do |format|
-      @genders = Customer.genders
-      @marital_statuses = Customer.marital_statuses
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
         format.json { render :show, status: :ok, location: @customer }

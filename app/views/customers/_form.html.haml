@@ -1,13 +1,9 @@
 = simple_form_for @customer, :html => { :class => 'form-horizontal' } do |f|
-
-  = f.input :register_date
+  -#register date could be created_at
+  -#= f.input :register_date
   = f.input :first_name
   = f.input :middle_name
   = f.input :last_name
-  = f.input :marital_status, collection: @marital_statuses.collect { |m| [m[0].humanize, m[0]] }
-  = f.input :email
-  = f.input :gender, collection: @genders.collect { |g| [g[0].humanize, g[0]] }
-  = f.input :spouse
-  = f.input :zipcode
-  = f.button :submit, :class => 'btn-primary'
+  = f.input :gender, collection: Customer.genders.collect { |g| [g[0].humanize, g[0]] },as: :radio_buttons
+  = f.button :submit, class:   'btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), request.referrer, :class => 'btn btn-default'
