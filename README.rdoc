@@ -5,4 +5,4 @@ Versión en blanco para instancias
 
 TheBitCorps 2016
 
-== Run 'npm install' please
+== Run 'npm install' please and 'foreman start' instead of 'rails s' to run both rails and webpack
