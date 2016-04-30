@@ -45,3 +45,5 @@ en:
       message: "All quotations"
   customers:
     info: "Personal Information"
+  helpers:
+    search: "Search"

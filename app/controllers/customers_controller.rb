@@ -4,7 +4,11 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @customers = Customer.all
+    @customers = Customer.search params[:search]
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

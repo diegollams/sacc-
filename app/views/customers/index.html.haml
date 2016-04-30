@@ -1,32 +1,20 @@
 - model_class = Customer
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+-#form will change with a react component
+= form_tag customers_path, :method => 'get',remote: true ,class: 'form-inline'do
+  = text_field_tag :search, params[:search],class: 'form-control',onkeyup: "$('#submit').click();", autocomplete: 'off'
+  = submit_tag t('helpers.search'), :name => nil,class: 'btn btn-primary',id: 'submit'
+
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:register_date)
       %th= model_class.human_attribute_name(:fullname)
-      %th= model_class.human_attribute_name(:marital_status)
-      %th= model_class.human_attribute_name(:email)
       %th= model_class.human_attribute_name(:gender)
-      %th= model_class.human_attribute_name(:spouse)
-      %th= model_class.human_attribute_name(:zipcode)
-      %th= model_class.human_attribute_name(:salesman)
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody
-    - @customers.each do |customer|
-      %tr
-        %td= customer.register_date
-        %td= customer.fullname
-        %td= customer.marital_status
-        %td= customer.email
-        %td= customer.gender
-        %td= customer.spouse
-        %td= customer.zipcode
-        %td= customer.salesman_name
-        %td
-          = link_to t('.show', :default => t("helpers.links.show")), customer_path(customer), :class => 'btn btn-primary btn-xs'
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_customer_path(customer), :class => 'btn btn-default btn-xs'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), customer_path(customer), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+      %th= model_class.human_attribute_name(:appointments)
+      %th= model_class.human_attribute_name(:interactions)
 
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody#customers
+    = render partial: 'customer',collection: @customers
 = link_to t('.new', :default => t("helpers.links.new")), new_customer_path, :class => 'btn btn-primary'

@@ -12,4 +12,12 @@ class Customer < ActiveRecord::Base
   def fullname
     [first_name, middle_name, last_name].join(" ")
   end
+
+  def self.search(search)
+    if search.blank?
+      all
+    else
+      includes(:appointments,:interactions).where('(customers.first_name || \' \' || customers.middle_name || \' \' || customers.last_name) ILIKE ? ', "%#{search}%")
+    end
+  end
 end

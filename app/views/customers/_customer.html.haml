@@ -1,0 +1,9 @@
+%tr
+  %td= customer.fullname
+  %td= customer.gender
+  %td= customer.appointments.count
+  %td= customer.interactions.count
+  %td
+    = link_to t('.show', :default => t("helpers.links.show")), customer_path(customer), :class => 'btn btn-primary btn-xs'
+    = link_to t('.edit', :default => t("helpers.links.edit")), edit_customer_path(customer), :class => 'btn btn-default btn-xs'
+    = link_to t('.destroy', :default => t("helpers.links.destroy")), customer_path(customer), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
