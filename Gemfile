@@ -23,6 +23,9 @@ gem 'haml-rails'
 gem 'dotenv-rails'
 gem 'rails_12factor', group: :production
 
+# to use webpack from https://github.com/mipearson/webpack-rails
+gem 'webpack-rails'
+
 # gem 'bcrypt', '~> 3.1.7'
 
 # gem 'puma'
@@ -49,3 +52,5 @@ group :development do
   # gem 'capistrano3-puma',   require: false
   gem 'airbrussh',          require: false
 end
+
+gem 'foreman'

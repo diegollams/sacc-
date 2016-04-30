@@ -13,3 +13,6 @@
 /tmp
 /.idea
 .DS_Store*
+# Added by webpack-rails
+/node_modules
+/public/webpack

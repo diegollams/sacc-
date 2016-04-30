@@ -1,6 +1,8 @@
-== README
+= README
 
 Sistema de Administración de Cartera de Clientes 2.0
 Versión en blanco para instancias
 
 TheBitCorps 2016
+
+== Run 'npm install' please
