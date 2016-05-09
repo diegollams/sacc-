@@ -11,6 +11,6 @@ class Appointment < ActiveRecord::Base
     scope :after_date, ->(date) {where('date > ?', date)}
     scope :before_date, ->(date) {where('date < ?', date)}
 
-####################### Instanse Methods ########################
+####################### Instance Methods ########################
 
 end

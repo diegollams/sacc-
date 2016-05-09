@@ -19,7 +19,7 @@ gem 'cancancan', '~> 1.10'
 gem 'royce'
 gem 'simple_form'
 gem 'haml-rails'
-
+gem 'react-rails', '~> 1.7.0'
 gem 'dotenv-rails'
 gem 'rails_12factor', group: :production
 
