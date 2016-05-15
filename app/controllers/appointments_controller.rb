@@ -1,11 +1,11 @@
 class AppointmentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
-  before_action :set_customer, only: [:index,:new,:edit]
 
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.from_customer @customer.id
+    @appointments = current_user.appointments
   end
 
   # GET /appointments/1
@@ -26,6 +26,7 @@ class AppointmentsController < ApplicationController
   # POST /appointments.json
   def create
     @appointment = Appointment.new(appointment_params)
+    @appointment.user = current_user
 
     respond_to do |format|
       if @appointment.save
@@ -64,9 +65,6 @@ class AppointmentsController < ApplicationController
 
   private
 
-    def set_customer
-      @customer = Customer.find params[:customer_id]
-    end
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment
       @appointment = Appointment.find(params[:id])

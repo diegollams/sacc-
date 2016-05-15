@@ -6,6 +6,7 @@ class CreateAppointments < ActiveRecord::Migration
       t.string :place
       t.string :status, default: :upcoming
       t.references :customer, index: true, foreign_key: true
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end

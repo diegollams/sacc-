@@ -4,6 +4,7 @@ class Appointment < ActiveRecord::Base
 
 ####################### Active Relations ########################
     belongs_to :customer
+    belongs_to :user
 
 #################### Class Methods / Scopes #####################
     scope :from_customer, ->(customer) {where( customer_id: customer.id).order(date: :asc, time: :asc)}
@@ -12,5 +13,9 @@ class Appointment < ActiveRecord::Base
     scope :before_date, ->(date) {where('date < ?', date)}
 
 ####################### Instanse Methods ########################
+
+    def start_time
+        date
+    end
 
 end

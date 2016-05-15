@@ -10,5 +10,5 @@ class User < ActiveRecord::Base
 
   has_many :customers, class_name: 'Customer', foreign_key: 'salesman_id'
   has_many :interactions, through: :customers
-  has_many :appointments,through: :customers
+  has_many :appointments
 end

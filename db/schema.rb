@@ -22,11 +22,13 @@ ActiveRecord::Schema.define(version: 20160427133456) do
     t.string   "place"
     t.string   "status",      default: "upcoming"
     t.integer  "customer_id"
+    t.integer  "user_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
 
   add_index "appointments", ["customer_id"], name: "index_appointments_on_customer_id", using: :btree
+  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
     t.datetime "register_date"
@@ -126,6 +128,7 @@ ActiveRecord::Schema.define(version: 20160427133456) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "appointments", "customers"
+  add_foreign_key "appointments", "users"
   add_foreign_key "customers", "users", column: "salesman_id"
   add_foreign_key "interactions", "customers"
   add_foreign_key "quotations", "customers"
