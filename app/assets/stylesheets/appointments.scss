@@ -7,6 +7,7 @@
     background-color: #fffefb;
     font-size: 15px;
     color: #9d9d9d;
+    width: 14.28%;
   }
 
   .wday-0 {
@@ -29,7 +30,7 @@
 
   .prev-month {
     background-color: #eeeeee;
-    color: #d2d2d2;
+    
   }
   .next-month {
     background-color: #eeeeee;
@@ -38,7 +39,7 @@
   .current-month {}
 
   .has-events {
-    color: #1a1a1a;
+    color: #009933;
   }
 }
 
@@ -46,5 +47,5 @@
 {
   margin-top: 0;
   margin-left: 0;
-  margin-bottom: 20px;
+  color: #9d9d9d;
 }

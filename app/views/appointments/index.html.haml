@@ -1,7 +1,5 @@
 = month_calendar events: @appointments do |date, appointments|
+  %p.empty-day
+    = date.day
   - if !appointments.empty?
-    - appointments.each do |appointment|
-      = appointment.place
-  - else
-    %p.empty-day
-      = date.day
+    = button_to appointments.count.to_s + ' ' + t('appointments.appointment', count: appointments.count), {action: '/appointments', method: :get, remote: true}, {class: 'btn btn-small'}
