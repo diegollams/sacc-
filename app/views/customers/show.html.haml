@@ -1,7 +1,20 @@
 
 - model_class = Customer
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.titleize
+  %h1
+    =t '.title', :default => model_class.model_name.human.titleize
+    .pull-right
+      = link_to new_appointment_path(customer_id: @customer.id), class: 'btn btn-primary' do
+        %span{class: 'fa fa-clock-o'}
+        =t('appointments.new.message')
+      = link_to new_interaction_path(customer_id: @customer.id), class: 'btn btn-primary' do
+        %span{class: 'fa fa-comment'}
+        =t('interactions.new.message')
+      = link_to new_quotation_path(customer_id: @customer.id), class: 'btn btn-primary' do
+        %span{class: 'fa fa-usd'}
+        =t('quotations.new.message')
+
+
 
 %ul.nav.nav-tabs{:role => 'tablist'}
   %li.active{:role => 'presentation'}
@@ -15,17 +28,21 @@
 .tab-content
   #info.tab-pane.fade.in.active{role: 'tabpanel'}
   #appointments.tab-pane.fade{role: 'tabpanel'}
-    = link_to t('appointments.new.message'), new_appointment_path(customer_id: @customer.id), class: 'btn btn-primary'
     = link_to t('appointments.index.message'), appointments_path(customer_id: @customer.id), class: 'btn btn-default'
   #interactions.tab-pane.fade{role: 'tabpanel'}
-    = link_to t('interactions.new.message'), new_interaction_path(customer_id: @customer.id), class: 'btn btn-primary'
     = link_to t('interactions.index.message'), interactions_path(customer_id: @customer.id), class: 'btn btn-default'
   #quotations.tab-pane.fade{role: 'tabpanel'}
-    = link_to t('quotations.new.message'), new_quotation_path(customer_id: @customer.id), class: 'btn btn-primary'
-    = link_to t('quotations.index.message'), quotations_path(customer_id: @customer.id), class: 'btn btn-default'
+    .row
+      - if @customer.quotations.empty?
+        .well
+          = t('quotations.index.empty')
+      - else
+        = render @customer.quotations
+    .row
+      = link_to t('quotations.index.message'), quotations_path(customer_id: @customer.id), class: 'btn btn-default'
 = link_to t('.back', :default => t('helpers.links.back')), request.referrer, class: 'btn btn-default'
 = link_to t('.edit', :default => t('helpers.links.edit')), edit_customer_path(@customer), class: 'btn btn-default'
 = link_to t('.destroy', :default => t('helpers.links.destroy')), customer_path(@customer), method: 'delete', data: { confirm: t('.confirm', default: t('helpers.links.confirm', default: 'Are you sure?')) }, class: 'btn btn-danger'
 
-= javascript_tag "ReactDOM.render( React.createElement(CustomerShow,{customer: #{@customer.to_json}}),document.getElementById('info'));"
+= javascript_tag "ReactDOM.render( React.createElement(CustomerShow,{customer: #{@customer.to_builder.target!}}),document.getElementById('info'));"
 

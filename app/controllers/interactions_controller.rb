@@ -1,5 +1,6 @@
 class InteractionsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_interaction, only: [:show, :edit, :update, :destroy]
   before_action :set_customer,only: [:index,:new]
   # GET /interactions

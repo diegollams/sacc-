@@ -6,16 +6,16 @@
     %tr
       %th= model_class.human_attribute_name(:customer_id)
       %th= model_class.human_attribute_name(:square_meters)
-      %th= model_class.human_attribute_name(:price)
-      %th= model_class.human_attribute_name(:created_at)
+      %th= model_class.human_attribute_name(:unit_price)
+      %th= model_class.human_attribute_name(:full_price)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @quotations.each do |quotation|
       %tr
         %td= link_to quotation.customer.fullname ,customer_url(quotation.customer)
         %td= quotation.square_meters
-        %td= quotation.price
-        %td=l quotation.created_at
+        %td= quotation.unit_price
+        %td= quotation.full_price
         %td
           = link_to t('.show',default: t("helpers.links.show")), quotation_path(quotation),class: 'btn btn-primary btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_quotation_path(quotation,customer_id: quotation.customer_id), :class => 'btn btn-default btn-xs'

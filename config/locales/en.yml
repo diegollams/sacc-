@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  date_range: "Starts at %{start_date} ends at %{end_date}."
   sign_out: "Sign out"
   interactions:
     new:
@@ -46,6 +47,7 @@ en:
       message: "New Quotation"
     index:
       message: "All quotations"
+      empty: "No quotations yet."
   customers:
     info: "Personal Information"
   helpers:

@@ -7,6 +7,7 @@ class Customer < ActiveRecord::Base
   belongs_to :salesman, :class_name => "User", :foreign_key => "salesman_id"
   has_many :interactions
   has_many :appointments
+  has_many :quotations
   enum marital_status: [ :single, :married ]
   enum gender: [ :male, :female ]
 
@@ -20,6 +21,12 @@ class Customer < ActiveRecord::Base
     end
   end
   ####################### Instance Methods ########################
+  def to_builder
+    Jbuilder.new do |customer|
+      customer.register_date register_date.strftime('%B %d, %Y')
+      customer.(self, :id, :first_name, :middle_name, :last_name, :marital_status, :email, :gender, :spouse, :zipcode, :salesman_id,:main_phone,:secondary_phone)
+    end
+  end
   def fullname
     [first_name, middle_name, last_name].join(" ")
   end

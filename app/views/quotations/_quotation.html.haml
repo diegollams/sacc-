@@ -1,0 +1,24 @@
+- model_class = Quotation
+- still_valid = quotation.still_valid?(Date.today)
+.col-md-4
+  .panel.panel-default
+    .panel-heading
+      = t 'date_range',start_date: quotation.created_at.strftime('%B  %d, %Y'),end_date: quotation.valid_until.strftime('%B  %d, %Y')
+      = check_fav still_valid
+
+    .panel-body
+      .ul
+        %p
+          %strong= model_class.human_attribute_name(:square_meters) + ':'
+          %br
+          = quotation.square_meters
+        %p
+          %strong= model_class.human_attribute_name(:price) + ':'
+          %br
+          = quotation.unit_price
+        %p
+          %strong= model_class.human_attribute_name(:full_price) + ':'
+          %br
+          = quotation.full_price
+      = link_to 'PDF' ,quotation_path(quotation),class: 'btn btn-danger',disabled: !still_valid
+      = link_to 'Email' ,quotation_path(quotation),class: 'btn btn-default',disabled: !still_valid

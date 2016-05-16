@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20160427133456) do
     t.integer  "customer_id"
     t.integer  "lot_id"
     t.decimal  "square_meters"
-    t.decimal  "price"
+    t.decimal  "unit_price"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

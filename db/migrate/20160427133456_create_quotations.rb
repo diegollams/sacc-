@@ -4,7 +4,7 @@ class CreateQuotations < ActiveRecord::Migration
       t.references :customer, index: true, foreign_key: true
       t.references :lot, index: true, foreign_key: true
       t.decimal :square_meters
-      t.decimal :price
+      t.decimal :unit_price
 
       t.timestamps null: false
     end

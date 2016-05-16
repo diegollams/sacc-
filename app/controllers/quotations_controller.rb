@@ -1,4 +1,6 @@
 class QuotationsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_quotation, only: [:show, :edit, :update, :destroy]
   before_action :set_customer, only: [:index,:new,:edit]
 
@@ -26,7 +28,7 @@ class QuotationsController < ApplicationController
   # POST /quotations.json
   def create
     @quotation = Quotation.new(quotation_params)
-
+    @customer = @quotation.customer
     respond_to do |format|
       if @quotation.save
         format.html { redirect_to @quotation, notice: 'Quotation was successfully created.' }
@@ -41,6 +43,7 @@ class QuotationsController < ApplicationController
   # PATCH/PUT /quotations/1
   # PATCH/PUT /quotations/1.json
   def update
+    @customer = @quotation.customer
     respond_to do |format|
       if @quotation.update(quotation_params)
         format.html { redirect_to @quotation, notice: 'Quotation was successfully updated.' }
@@ -74,6 +77,6 @@ class QuotationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quotation_params
-      params.require(:quotation).permit(:customer_id, :square_meters, :price)
+      params.require(:quotation).permit(:customer_id, :square_meters, :unit_price)
     end
 end

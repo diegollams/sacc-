@@ -13,8 +13,11 @@
 %p
   %strong= model_class.human_attribute_name(:price) + ':'
   %br
-  = @quotation.price
-
+  = @quotation.unit_price
+%p
+  %strong= model_class.human_attribute_name(:full_price) + ':'
+  %br
+  = @quotation.full_price
 
 = link_to t('.back', default: t('helpers.links.back')), request.referrer, class: 'btn btn-default'
 = link_to t('.edit', default: t('helpers.links.edit')), edit_quotation_path(@quotation), class: 'btn btn-default'
