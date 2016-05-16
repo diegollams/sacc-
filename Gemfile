@@ -2,24 +2,27 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.5'
 gem 'pg', '~> 0.15'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
 gem 'therubyracer', platforms: :ruby
+
+group :assets do
+  gem 'sass-rails', '~> 5.0'
+  gem 'uglifier', '>= 1.3.0'
+  gem 'coffee-rails', '~> 4.1.0'
+end
+gem 'twitter-bootstrap-rails'
 
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'cancancan', '~> 1.10'
 gem 'royce'
 gem 'simple_form'
 gem 'haml-rails'
-
+gem 'react-rails', '~> 1.7.0'
 gem 'dotenv-rails'
 gem 'rails_12factor', group: :production
 

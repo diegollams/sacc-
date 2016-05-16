@@ -43,7 +43,7 @@ class CustomersController < ApplicationController
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
+        format.json { render json: @customer.errors.full_messages, status: :unprocessable_entity }
       end
     end
   end
@@ -62,6 +62,6 @@ class CustomersController < ApplicationController
     end
 
     def customer_params
-      params.require(:customer).permit(:register_date, :first_name, :middle_name, :last_name, :marital_status, :email, :gender, :spouse, :zipcode)
+      params.require(:customer).permit(:salesman_id,:register_date, :first_name, :middle_name, :last_name, :marital_status, :email, :gender, :spouse, :zipcode,:main_phone,:secondary_phone)
     end
 end

@@ -32,17 +32,19 @@ ActiveRecord::Schema.define(version: 20160427133456) do
 
   create_table "customers", force: :cascade do |t|
     t.datetime "register_date"
-    t.string   "first_name",     default: ""
-    t.string   "middle_name",    default: ""
-    t.string   "last_name",      default: ""
+    t.string   "first_name",      default: ""
+    t.string   "middle_name",     default: ""
+    t.string   "last_name",       default: ""
     t.integer  "marital_status"
-    t.string   "email"
+    t.string   "email",           default: ""
     t.integer  "gender"
-    t.string   "spouse"
+    t.string   "spouse",          default: ""
     t.integer  "zipcode"
+    t.string   "main_phone",      default: ""
+    t.string   "secondary_phone", default: ""
     t.integer  "salesman_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "customers", ["salesman_id"], name: "index_customers_on_salesman_id", using: :btree
