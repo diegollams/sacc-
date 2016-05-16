@@ -1,6 +1,6 @@
 = simple_form_for @interaction, :html => { :class => 'form-horizontal' } do |f|
   = f.input :kind
-  = f.input :observation
+  = f.input :observation, :input_html => {onclick: "DatePicker()" }
   = f.input :date
   = f.input :time
   = f.input :customer_id, input_html: {value: @customer.id},as: :hidden

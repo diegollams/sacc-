@@ -1,3 +1,3 @@
-var path = require('path');
+var babel = require('babel-core');
 
-console.log(path.basename('../app/assets/javascripts/dashboard.coffee'));
+var DatePicker = babel.transformFile("DatePicker.js").code.DatePickerExampleSimple();
