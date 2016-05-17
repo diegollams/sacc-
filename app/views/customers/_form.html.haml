@@ -4,6 +4,10 @@
   = f.input :first_name
   = f.input :middle_name
   = f.input :last_name
+  - if @salesman
+    = f.input :salesman_id, as: :hidden,input_html: {value: current_user.id}
+  - else
+    = f.input :salesman_id,collection: User.salesmen
   = f.input :gender, collection: Customer.genders.collect { |g| [g[0].humanize, g[0]] },as: :radio_buttons
   = f.button :submit, class:   'btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), request.referrer, :class => 'btn btn-default'

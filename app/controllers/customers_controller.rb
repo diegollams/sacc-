@@ -16,6 +16,7 @@ class CustomersController < ApplicationController
 
   def new
     @customer = Customer.new
+    @salesman = current_user if current_user.salesman?
   end
 
   def edit

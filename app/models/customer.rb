@@ -13,13 +13,13 @@ class Customer < ActiveRecord::Base
 
   delegate :name, to: :salesman, prefix: true, allow_nil: true
   #################### Class Methods / Scopes #####################
-  def self.search(search)
-    if search.blank?
-      all
-    else
-      includes(:appointments,:interactions).where('(customers.first_name || \' \' || customers.middle_name || \' \' || customers.last_name) ILIKE ? ', "%#{search}%")
-    end
-  end
+  scope :search , ->(search){
+      if search.blank?
+        all
+      else
+        includes(:appointments,:interactions).where('(customers.first_name || \' \' || customers.middle_name || \' \' || customers.last_name) ILIKE ? ', "%#{search}%")
+      end
+  }
   ####################### Instance Methods ########################
   def to_builder
     Jbuilder.new do |customer|

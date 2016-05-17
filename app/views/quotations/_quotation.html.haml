@@ -1,6 +1,7 @@
 - model_class = Quotation
 - still_valid = quotation.still_valid?(Date.today)
-.col-md-4
+- size ||=  'col-md-4'
+%div{class: size}
   .panel.panel-default
     .panel-heading
       = t 'date_range',start_date: quotation.created_at.strftime('%B  %d, %Y'),end_date: quotation.valid_until.strftime('%B  %d, %Y')

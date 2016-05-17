@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # @user.password = '12345678' # https://www.youtube.com/watch?v=1MLry6Cn_D4
+    @user.password = '12345678' # https://www.youtube.com/watch?v=1MLry6Cn_D4
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }

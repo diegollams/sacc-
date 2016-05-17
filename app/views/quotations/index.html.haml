@@ -8,6 +8,7 @@
       %th= model_class.human_attribute_name(:square_meters)
       %th= model_class.human_attribute_name(:unit_price)
       %th= model_class.human_attribute_name(:full_price)
+      %th= model_class.human_attribute_name(:valid_until)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @quotations.each do |quotation|
@@ -16,6 +17,7 @@
         %td= quotation.square_meters
         %td= quotation.unit_price
         %td= quotation.full_price
+        %td= quotation.valid_until.strftime('%B  %d, %Y')
         %td
           = link_to t('.show',default: t("helpers.links.show")), quotation_path(quotation),class: 'btn btn-primary btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_quotation_path(quotation,customer_id: quotation.customer_id), :class => 'btn btn-default btn-xs'
