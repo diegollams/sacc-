@@ -12,6 +12,7 @@ class Ability
       can :update, User, id: user.id
       can :manage, Lot
       can [:read, :create], Quotation
+      can :manage, Interaction
     end
   end
 end

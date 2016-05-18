@@ -61,7 +61,7 @@ var SearchInput = React.createClass({
     render: function () {
         var spinner = null;
         if(this.state.searching){
-            spinner = <i className="fa fa-circle-o-notch fa-spin" style={{'fontSize':'24px'}}/>;
+            spinner = <i className="fa fa-circle-o-notch  text-primary fa-spin" style={{'fontSize':'24px'}}/>;
 
         }
         return (

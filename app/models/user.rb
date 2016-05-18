@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   #################### Class Methods / Scopes #####################
   def is_my_customer?(customer)
+    # admin can control of all customers
     admin? or customer.id == id
   end
 
