@@ -1,25 +1,26 @@
 - model_class = Customer
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  %h1
+    =t '.title', :default => model_class.model_name.human.pluralize.titleize
+    .pull-right
+      = link_to new_customer_path, :class => 'btn btn-primary' do
+        %span{class: 'fa fa-user'}
+        = t('.new', :default => t("helpers.links.new"))
+
 -#form will change with a react component
 #search
--#= form_tag customers_path, :method => 'get',remote: true ,class: 'form-inline'do
--#  = text_field_tag :search, params[:search],class: 'form-control',onkeyup: "$('#submit').click();", autocomplete: 'off'
--#  = submit_tag t('helpers.search'), :name => nil,class: 'btn btn-primary',id: 'submit'
-
 %table.table.table-striped
   %thead
     %tr
       %th= model_class.human_attribute_name(:fullname)
       %th= model_class.human_attribute_name(:gender)
-      %th= model_class.human_attribute_name(:appointments)
       %th= t('customers.register_date')
+      %th= model_class.human_attribute_name(:appointments)
       %th= model_class.human_attribute_name(:interactions)
 
       %th=t '.actions', :default => t("helpers.actions")
   %tbody#customers
     = render partial: 'customer',collection: @customers
-= link_to t('.new', :default => t("helpers.links.new")), new_customer_path, :class => 'btn btn-primary'
 
 
 = javascript_tag "ReactDOM.render( React.createElement(SearchInput,{url: '#{customers_path}',queryParam: 'search'}),document.getElementById('search'));"

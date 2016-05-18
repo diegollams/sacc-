@@ -1,7 +1,6 @@
 class CreateCustomers < ActiveRecord::Migration
   def change
     create_table :customers do |t|
-      t.datetime :register_date
       t.string :first_name,default: ''
       t.string :middle_name,default: ''
       t.string :last_name,default: ''

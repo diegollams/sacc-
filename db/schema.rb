@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20160427133456) do
   add_index "appointments", ["user_id"], name: "index_appointments_on_user_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
-    t.datetime "register_date"
     t.string   "first_name",      default: ""
     t.string   "middle_name",     default: ""
     t.string   "last_name",       default: ""

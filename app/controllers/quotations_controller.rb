@@ -2,12 +2,12 @@ class QuotationsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
   before_action :set_quotation, only: [:show, :edit, :update, :destroy]
-  before_action :set_customer, only: [:index,:new,:edit]
+  before_action :set_customer, only: [:new,:edit]
 
   # GET /quotations
   # GET /quotations.json
   def index
-    @quotations = Quotation.from_customer @customer.id
+    @quotations = Quotation.all
   end
 
   # GET /quotations/1

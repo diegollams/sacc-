@@ -2,11 +2,12 @@ class InteractionsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
   before_action :set_interaction, only: [:show, :edit, :update, :destroy]
-  before_action :set_customer,only: [:index,:new]
+  before_action :set_customer,only: [:new]
   # GET /interactions
   # GET /interactions.json
   def index
-    @interactions = Interaction.from_customer @customer
+    @interactions = Interaction.all
+    @most_proactive = User.most_proactive
   end
 
   # GET /interactions/1

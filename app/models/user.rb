@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   ####################### Active Relations ########################
 
-  has_many :customers, class_name: 'Customer', foreign_key: 'salesman_id'
+  has_many :customers, class_name: 'Customer', foreign_key: 'salesman_id',dependent: :nullify
   has_many :interactions, through: :customers
   has_many :appointments
   royce_roles %w[ admin staff salesman ] # roles names were arbitrary selected, consensus required
@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
   def is_my_customer?(customer)
     # admin can control of all customers
     admin? or customer.id == id
+  end
+
+  def self.most_proactive
+    sm = User.salesmen.sort{ |x, y| x.interactions.count <=> y.interactions.count}
+    sm.first
   end
 
 end

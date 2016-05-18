@@ -1,7 +1,7 @@
 %tr
   %td= customer.fullname
   %td= customer.gender
-  -#%td=l customer.created_at,formats:
+  %td=l customer.created_at,formats: :strformat_date
   %td= customer.appointments.count
   %td= customer.interactions.count
   %td
