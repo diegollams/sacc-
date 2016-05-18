@@ -1,4 +1,4 @@
-%nav.navbar.navbar-default.navbar-static-top{role: :navigation}
+%nav.navbar.navbar-default.navbar-static-top{role: :navigation, style: 'margin-bottom: 0'}
   .navbar-header
     %button.navbar-toggle{type: "button", data: {toggle: "collapse", target: ".navbar-responsive-collapse"}}
       %span.icon-bar
@@ -17,5 +17,3 @@
         %li
           = link_to destroy_user_session_path, method: :delete  ,data: { 'toggle' => 'tooltip' ,'placement' => 'bottom' },'title' => t('sign_out') do
             %span{class: 'fa fa-sign-out'}
-%div{class: 'navbar-default sidebar'}
-
