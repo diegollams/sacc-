@@ -30,6 +30,7 @@
   #appointments.tab-pane.fade{role: 'tabpanel'}
     = link_to t('appointments.index.message'), appointments_path(customer_id: @customer.id), class: 'btn btn-default'
   #interactions.tab-pane.fade{role: 'tabpanel'}
+    = render partial: 'interactions/interactions', locals: {interactions: @customer.interactions}
     = link_to t('interactions.index.message'), interactions_path(customer_id: @customer.id), class: 'btn btn-default'
   #quotations.tab-pane.fade{role: 'tabpanel'}
     .row

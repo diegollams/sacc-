@@ -2,26 +2,29 @@
 .page-header
   %h1=t '.title', default: model_class.model_name.human.titleize
 
-%p
-  %strong= model_class.human_attribute_name(:kind) + ':'
-  %br
-  = @interaction.kind
-%p
-  %strong= model_class.human_attribute_name(:observation) + ':'
-  %br
-  = @interaction.observation
-%p
-  %strong= model_class.human_attribute_name(:date) + ':'
-  %br
-  = @interaction.date
-%p
-  %strong= model_class.human_attribute_name(:customer) + ':'
-  %br
-  = link_to @interaction.customer.fullname,customer_path(@interaction.customer)
-%p
-  %strong= model_class.human_attribute_name(:time) + ':'
-  %br
-  = @interaction.time
+.panel.panel-default
+  .panel-heading
+    = t('interactions.show.message')
+    = link_to @interaction.customer.fullname, @interaction.customer
+  .panel-body
+    .col-md-6
+      %p
+        %strong= model_class.human_attribute_name(:kind) + ':'
+        %br
+        = @interaction.kind
+      %p
+        %strong= model_class.human_attribute_name(:date) + ':'
+        %br
+        = l @interaction.date, format: :strformat_date
+      %p
+        %strong= model_class.human_attribute_name(:time) + ':'
+        %br
+        = l @interaction.time, format: :strformat_time
+    .col-md-6
+      %p
+        %strong= model_class.human_attribute_name(:observation).pluralize + ':'
+        %br
+        = @interaction.observation
 
 
 = link_to t('.back', default: t("helpers.links.back")), request.referrer, class: 'btn btn-default'

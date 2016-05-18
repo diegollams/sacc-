@@ -20,14 +20,24 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  time:
+    formats:
+      strformat_time: "%I:%M %p"
+  date:
+    formats:
+      strformat_date: "%B %d, %Y"
   date_range: "Starts at %{start_date} ends at %{end_date}."
   sign_out: "Sign out"
   interactions:
     new:
       message: "New Interaction"
     index:
-      title: "Interactions with %{customer}"
+      title: "Interactions"
       message: "All interactions"
+      count: "Total of interactions"
+      all: "All: %{count}"
+    show:
+      message: "Interaction with"
   appointments:
     appointment:
       one: "appointment"

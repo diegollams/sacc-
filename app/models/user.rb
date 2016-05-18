@@ -19,4 +19,20 @@ class User < ActiveRecord::Base
     admin? or customer.id == id
   end
 
+  def self.most_proactive
+    greatest = 0
+    salesman = nil
+    User.salesmen.each do |sm|
+      puts "sese"
+      total = sm.interactions.count
+      puts total
+      if total > greatest
+        puts "cca"
+        greatest = total
+        salesman = sm
+      end
+    end
+    salesman
+  end
+
 end
