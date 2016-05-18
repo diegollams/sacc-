@@ -17,12 +17,13 @@
     /[if lt IE 9]
       = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"
 
+  %body
+    #wrapper
+      = render partial: 'common/navbar'
 
-    = render partial: 'common/navbar'
+      .container
+        .row
+          = bootstrap_flash
+          = yield
 
-    .container
-      .row
-        = bootstrap_flash
-        = yield
-
-    = render partial: 'common/footer'
+      = render partial: 'common/footer'
