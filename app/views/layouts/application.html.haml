@@ -20,10 +20,7 @@
   %body
     #wrapper
       = render partial: 'common/navbar'
-
-      .container
-        .row
-          = bootstrap_flash
-          = yield
-
-      = render partial: 'common/footer'
+    #page-wrapper
+      = bootstrap_flash
+      = yield
+      / # = render partial: 'common/footer'
