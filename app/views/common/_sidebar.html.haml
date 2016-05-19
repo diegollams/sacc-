@@ -24,3 +24,7 @@
         = link_to customers_path do
           %i{class: 'fa fa-users fa-fw'}
           = Customer.model_name.human.pluralize.titleize
+      %li
+        = link_to surveys_path do
+          %i{class: 'fa fa-file-text fa-fw', aria: {hidden: true}}
+          = Survey.model_name.human.pluralize.titleize

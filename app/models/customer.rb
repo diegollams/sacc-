@@ -1,18 +1,18 @@
 class Customer < ActiveRecord::Base
 
-  ######################### Validations ##########################
+  #-- Validations
   validates :first_name,:middle_name,:gender,:salesman_id,presence: true
-
-  ####################### Active Relations ########################
+  #-- Active Relations
   belongs_to :salesman, :class_name => "User", :foreign_key => "salesman_id"
   has_many :interactions
   has_many :appointments
   has_many :quotations
+  has_many :surveys
   enum marital_status: [ :single, :married ]
   enum gender: [ :male, :female ]
 
   delegate :name, to: :salesman, prefix: true, allow_nil: true
-  #################### Class Methods / Scopes #####################
+  #-- Class Methods / Scopes
   scope :search , ->(search){
       if search.blank?
         all
@@ -20,7 +20,7 @@ class Customer < ActiveRecord::Base
         includes(:appointments,:interactions).where('(customers.first_name || \' \' || customers.middle_name || \' \' || customers.last_name) ILIKE ? ', "%#{search}%")
       end
   }
-  ####################### Instance Methods ########################
+  #-- Instance Methods
   def to_builder
     Jbuilder.new do |customer|
       customer.register_date created_at.strftime('%B %d, %Y')
