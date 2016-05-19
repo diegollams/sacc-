@@ -6,8 +6,22 @@
       %span.icon-bar
     = link_to 'Client brand here', root_path, class: 'navbar-brand' # Let's customize this from YML
   %ul{class: 'nav navbar-top-links navbar-right'}
-    %li= link_to current_user.name, current_user
-    %li
-      = link_to destroy_user_session_path, method: :delete  ,data: { toggle: 'tooltip', placement: :bottom }, title: t('sign_out') do
-        %span{class: 'fa fa-sign-out'}
+    %li{class: "dropdown"}
+      %a{class: "dropdown-toggle", href: "#", data: {toggle: "dropdown"}, aria: {expanded: "false"}}
+        %i{class: "fa fa-user fa-fw"}
+        %i{class: "fa fa-caret-down"}
+      %ul{class: "dropdown-menu dropdown-user"}
+        %li
+          = link_to current_user do
+            %i{class: "fa fa-user fa-fw"}
+            = current_user.name
+        %li
+          %a{href: "#"}
+            %i{class: "fa fa-gear fa-fw"}
+            Settings
+        %li.divider
+        %li
+          = link_to destroy_user_session_path, method: :delete  ,data: { toggle: 'tooltip', placement: :bottom }, title: t('sign_out') do
+            %i{class: 'fa fa-sign-out fa-fw'}
+            Logout
   = render partial: 'common/sidebar'
