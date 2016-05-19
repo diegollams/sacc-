@@ -1,20 +1,20 @@
 class Quotation < ActiveRecord::Base
-  ######################### Validations ##########################
+  #-- Validations
   validates :unit_price,:square_meters,:customer_id, :counteroffer, presence: true
   validate :validate_counteroffer
-  ####################### Active Relations ########################
+  #-- Active Relations
   belongs_to :customer
   belongs_to :lot
-  has_one :salesman,through: :customer
-  #################### Class Variables #####################
+  has_one :salesman, through: :customer
+  #-- Class Variables
   VALID_AFTER = 15
   attr_reader :full_price
-  #################### Class Methods / Scopes #####################
+  #-- Class Methods / Scopes
   default_scope {order('created_at DESC')}
   scope :from_customer , ->(customer_id) {where( customer_id: customer_id).order(created_at: :asc)}
   scope :from_month, ->(date) {where(created_at: date.beginning_of_month..date.end_of_month)}
 
-  ####################### Instance Methods ########################
+  #-- Instance Methods
   def  validate_counteroffer
     if counteroffer > 100 or counteroffer < 0
       # make i18 string
@@ -37,5 +37,4 @@ class Quotation < ActiveRecord::Base
   def still_valid?(date)
     date <= valid_until
   end
-
 end
