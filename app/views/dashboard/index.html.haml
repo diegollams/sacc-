@@ -1,8 +1,83 @@
 -# Dudes, can't you really not cleanup your views and make them all-haml??
 .page-header
   %h1 Dashboard
-.col-xs-12
-  .row
+.row
+  %div{class: "col-lg-3 col-md-6"}
+    %div{class: "panel panel-primary"}
+      %div{class: "panel-heading"}
+        %div{class: "row"}
+          %div{class: "col-xs-3"}
+            %i{class: "fa fa-comments fa-5x"}
+          %div{class: "col-xs-9 text-right"}
+            %div{class: "huge"}
+              26
+            %div
+              New Comments!
+      %a{href: "#"}
+        %div{class: "panel-footer"}
+          %span{class: "pull-left"}
+            View Details
+          %span{class: "pull-right"}
+            %i{class: "fa fa-arrow-circle-right"}
+          %div{class: "clearfix"}
+  %div{class: "col-lg-3 col-md-6"}
+    %div{class: "panel panel-green"}
+      %div{class: "panel-heading"}
+        %div{class: "row"}
+          %div{class: "col-xs-3"}
+            %i{class: "fa fa-tasks fa-5x"}
+          %div{class: "col-xs-9 text-right"}
+            %div{class: "huge"}
+              12
+            %div
+              New Tasks!
+      %a{href: "#"}
+        %div{class: "panel-footer"}
+          %span{class: "pull-left"}
+            View Details
+          %span{class: "pull-right"}
+            %i{class: "fa fa-arrow-circle-right"}
+          %div{class: "clearfix"}
+  %div{class: "col-lg-3 col-md-6"}
+    %div{class: "panel panel-yellow"}
+      %div{class: "panel-heading"}
+        %div{class: "row"}
+          %div{class: "col-xs-3"}
+            %i{class: "fa fa-shopping-cart fa-5x"}
+          %div{class: "col-xs-9 text-right"}
+            %div{class: "huge"}
+              124
+            %div
+              New Orders!
+      %a{href: "#"}
+        %div{class: "panel-footer"}
+          %span{class: "pull-left"}
+            View Details
+          %span{class: "pull-right"}
+            %i{class: "fa fa-arrow-circle-right"}
+          %div{class: "clearfix"}
+  %div{class: "col-lg-3 col-md-6"}
+    %div{class: "panel panel-red"}
+      %div{class: "panel-heading"}
+        %div{class: "row"}
+          %div{class: "col-xs-3"}
+            %i{class: "fa fa-support fa-5x"}
+          %div{class: "col-xs-9 text-right"}
+            %div{class: "huge"}
+              13
+            %div
+              Support Tickets!
+      %a{href: "#"}
+        %div{class: "panel-footer"}
+          %span{class: "pull-left"}
+            View Details
+          %span{class: "pull-right"}
+            %i{class: "fa fa-arrow-circle-right"}
+          %div{class: "clearfix"}
+  / Widgets go here
+.row
+  / made responsive tab zone
+  .col-lg-8
     %ul.nav.nav-tabs{role: :tablist}
       %li.active{role: :presentation}
         = link_to((t 'appointments.today'), '#today', role: 'tab', aria: {controls: :home}, data: {toggle: :tab})
@@ -13,3 +88,59 @@
       %li{role: :presentation}
         = link_to((t 'appointments.all'), '#all', role: 'tab', aria: {controls: :messages}, data: {toggle: :tab})
     .tab-content
+  .col-lg-4
+    / Widgets for demo purposes only
+    %div{class: "panel panel-default"}
+      %div{class: "panel-heading"}
+        %i{class: "fa fa-bell fa-fw"}
+        Notifications Panel
+      %div{class: "panel-body"}
+        %div{class: "list-group"}
+          %a{href: "#", class: "list-group-item"}
+            %i{class: "fa fa-comment fa-fw"}
+            New Comment
+            %span{class: "pull-right text-muted small"}
+              %em
+                4 minutes ago
+          %a{href: "#", class: "list-group-item"}
+            %i{class: "fa fa-twitter fa-fw"}
+            3 New Followers
+            %span{class: "pull-right text-muted small"}>
+              %em 12 minutes ago
+          %a{href: "#", class: "list-group-item"}
+            %i{class: "fa fa-envelope fa-fw"}
+            Message Sent
+            %span{class: "pull-right text-muted small"}
+              %em 27 minutes ago
+          %a{href: "#", class: "list-group-item"}
+            %i{class: "fa fa-tasks fa-fw"}
+            New Task
+            %span{class: "pull-right text-muted small"}
+              %em 43 minutes ago
+          %a{href: "#", class: "list-group-item"}
+            %i{class: "fa fa-upload fa-fw"}
+            Server Rebooted
+            %span{class: "pull-right text-muted small"}
+              %em 11:32 AM
+          %a{href: "#", class: "list-group-item"}
+            %i{class: "fa fa-bolt fa-fw"}
+            Server Crashed!
+            %span{class: "pull-right text-muted small"}
+              %em 11:13 AM
+          %a{href: "#", class: "list-group-item"}
+            %i{class: "fa fa-warning fa-fw"}
+            Server Not Responding
+            %span{class: "pull-right text-muted small"}
+              %em 10:57 AM
+          %a{href: "#", class: "list-group-item"}
+            %i{class: "fa fa-shopping-cart fa-fw"}
+            New Order Placed
+            %span{class: "pull-right text-muted small"}
+              %em 9:49 AM
+          %a{href: "#", class: "list-group-item"}
+            %i{class: "fa fa-money fa-fw"}
+            Payment Received
+            %span{class: "pull-right text-muted small"}
+              %em Yesterday
+.row
+  / Other shit goes here
