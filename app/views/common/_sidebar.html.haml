@@ -1,6 +1,6 @@
 %div{class: 'navbar-default sidebar', role: :navigation}
   %div{class: 'sidebar-nav navbar-collapse'}
-    %ul#side-menu{class: 'nav in'}
+    %ul{id: 'side-menu', class: 'nav'}
       %li{class: 'sidebar-search'}
         /this is just a placeholder, gonna change for a real rails object
         %div{class: 'input-group custom-search-form'}
@@ -8,7 +8,7 @@
           %span{class: 'input-group-btn'}
             %button{class: 'btn btn-default'}
               %i{class: 'fa fa-search'}
-      %li
+      %li.active
         =link_to root_path do
           %i{class: 'fa fa-dashboard fa-fw'}
           Dashboard
@@ -21,7 +21,7 @@
           %i{class: 'fa fa-table fa-fw'}
           Dos
           %span{class: 'fa arrow'}
-        %ul{class: 'nav nav-second-level collapse'}
+        %ul{class: 'nav nav-second-level'}
           %li= link_to 'Dos Uno', nil
       %li
         =link_to nil do
