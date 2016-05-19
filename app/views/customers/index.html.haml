@@ -1,12 +1,6 @@
 - model_class = Customer
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
--#form will change with a react component
-#search
--#= form_tag customers_path, :method => 'get',remote: true ,class: 'form-inline'do
--#  = text_field_tag :search, params[:search],class: 'form-control',onkeyup: "$('#submit').click();", autocomplete: 'off'
--#  = submit_tag t('helpers.search'), :name => nil,class: 'btn btn-primary',id: 'submit'
-
 %table.table.table-striped
   %thead
     %tr
@@ -19,6 +13,3 @@
   %tbody#customers
     = render partial: 'customer',collection: @customers
 = link_to t('.new', :default => t("helpers.links.new")), new_customer_path, :class => 'btn btn-primary'
-
-
-= javascript_tag "ReactDOM.render( React.createElement(SearchInput,{url: '#{customers_path}',queryParam: 'search'}),document.getElementById('search'));"

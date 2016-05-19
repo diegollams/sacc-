@@ -8,6 +8,6 @@
   %ul{class: 'nav navbar-top-links navbar-right'}
     %li= link_to current_user.name, current_user
     %li
-      = link_to destroy_user_session_path, method: :delete  ,data: { 'toggle' => 'tooltip' ,'placement' => 'bottom' },'title' => t('sign_out') do
+      = link_to destroy_user_session_path, method: :delete  ,data: { toggle: 'tooltip', placement: :bottom }, title: t('sign_out') do
         %span{class: 'fa fa-sign-out'}
   = render partial: 'common/sidebar'
