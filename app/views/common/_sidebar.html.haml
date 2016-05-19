@@ -3,7 +3,7 @@
     %ul{id: 'side-menu', class: 'nav'}
       %li{class: 'sidebar-search'}
         /this is just a placeholder, gonna change for a real rails object
-        %div{class: 'input-group custom-search-form'}
+        %div{class: 'input-group custom-search-form', id: 'search'}
           %input{type: 'text', class: 'form-control', placeholder: 'Search...'}
           %span{class: 'input-group-btn'}
             %button{class: 'btn btn-default'}
@@ -24,7 +24,11 @@
         = link_to customers_path do
           %i{class: 'fa fa-users fa-fw'}
           = Customer.model_name.human.pluralize.titleize
+<<<<<<< HEAD
       %li
         = link_to surveys_path do
           %i{class: 'fa fa-file-text fa-fw', aria: {hidden: true}}
           = Survey.model_name.human.pluralize.titleize
+=======
+
+>>>>>>> master

@@ -62,6 +62,8 @@ en:
       all: "All: %{count}"
       this_month: "This month"
     invalid: "Invalid quotation"
+    form:
+      counteroffer_input: "% percentage"
   customers:
     info: "Personal Information"
   helpers:

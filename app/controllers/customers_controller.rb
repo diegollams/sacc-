@@ -8,6 +8,7 @@ class CustomersController < ApplicationController
     respond_to do |format|
       format.html
       format.js
+      format.json {render :index}
     end
   end
 
@@ -63,6 +64,6 @@ class CustomersController < ApplicationController
     end
 
     def customer_params
-      params.require(:customer).permit(:salesman_id,:register_date, :first_name, :middle_name, :last_name, :marital_status, :email, :gender, :spouse, :zipcode,:main_phone,:secondary_phone)
+      params.require(:customer).permit(:salesman_id, :first_name, :middle_name, :last_name, :marital_status, :email, :gender, :spouse, :zipcode, :main_phone, :secondary_phone)
     end
 end

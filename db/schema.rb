@@ -104,8 +104,9 @@ ActiveRecord::Schema.define(version: 20160519060732) do
     t.integer  "lot_id"
     t.decimal  "square_meters"
     t.decimal  "unit_price"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.decimal  "counteroffer",  default: 0.0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "quotations", ["customer_id"], name: "index_quotations_on_customer_id", using: :btree

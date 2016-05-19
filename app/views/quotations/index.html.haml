@@ -1,21 +1,9 @@
 - model_class = Quotation
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-.row
-  .col-md-3
-    .panel.panel-default
-      .panel-heading
-        = t('quotations.index.count')
-      .panel-body
-        // All quptations will be displayed by kind
-        = t('quotations.index.all', count: Quotation.all.count)
-  .col-md-3
-    .panel.panel-default
-      .panel-heading
-        = t('quotations.index.this_month')
-      .panel-body
-        // All quptations will be displayed by kind
-        = t('quotations.index.all', count: Quotation.from_month(Time.now).count)
+= render partial: 'common/panel',locals: {message: t('quotations.index.count'), heading: t('quotations.index.all', count: Quotation.all.count),favicon: 'comments'}
+= render partial: 'common/panel',locals: {message: t('quotations.index.this_month'), heading: t('quotations.index.all', count: Quotation.from_month(Time.now).count),favicon: 'comments',class_color: 'success'}
+
 %table.table.table-striped
   %thead
     %tr
