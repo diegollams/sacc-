@@ -1,6 +1,7 @@
 class Quotation < ActiveRecord::Base
   #-- Validations
-  validates :unit_price, :square_meters, :customer_id, :lot, presence: true
+  validates :unit_price,:square_meters,:customer_id, :counteroffer, presence: true
+  validate :validate_counteroffer
   #-- Active Relations
   belongs_to :customer
   belongs_to :lot
@@ -12,9 +13,21 @@ class Quotation < ActiveRecord::Base
   default_scope {order('created_at DESC')}
   scope :from_customer , ->(customer_id) {where( customer_id: customer_id).order(created_at: :asc)}
   scope :from_month, ->(date) {where(created_at: date.beginning_of_month..date.end_of_month)}
+
   #-- Instance Methods
+  def  validate_counteroffer
+    if counteroffer > 100 or counteroffer < 0
+      # make i18 string
+      errors.add(:counteroffer,'must be beetwen 0 and 100')
+    end
+  end
+
   def full_price
     unit_price * square_meters
+  end
+
+  def counteroffer_price
+    (full_price * (100 -counteroffer)) / 100
   end
 
   def valid_until
