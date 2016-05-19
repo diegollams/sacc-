@@ -20,8 +20,7 @@
   %body
     #wrapper
       = render partial: 'common/navbar'
-      = render partial: 'common/sidebar'
-    #page-wrapper{style: 'padding: 10px 0 0 10px;'}
-      = bootstrap_flash
-      = yield
+      #page-wrapper{style: 'padding: 10px 0 0 10px;'}
+        = bootstrap_flash
+        = yield
       / # = render partial: 'common/footer'
