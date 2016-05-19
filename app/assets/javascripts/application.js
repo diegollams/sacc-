@@ -19,8 +19,8 @@
 //= require components
 //= require_tree .
 
-var loadToolptip = function(){
+var loadTooltip = function(){
     $('[data-toggle="tooltip"]').tooltip();
 };
 
-$(document).on('page:load ready page:change', loadToolptip);
+$(document).on('page:load ready page:change', loadTooltip);

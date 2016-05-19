@@ -1,10 +1,15 @@
-%ul.nav.nav-tabs{:role => 'tablist'}
-  %li.active{:role => 'presentation'}
-    %a{'aria-controls' => 'home', 'data-toggle' => "tab", href: '#today', role: 'tab'}= t 'appointments.today'
-  %li{:role => "presentation"}
-    %a{'aria-controls' => 'profile', 'data-toggle' => 'tab', href: '#upcoming', role: 'tab'}= t 'appointments.upcoming'
-  %li{:role => "presentation"}
-    %a{'aria-controls' => 'messages', 'data-toggle' => 'tab', href: '#past', role: 'tab'}=  t 'appointments.past'
-  %li{:role => "presentation"}
-    %a{'aria-controls' => 'messages', 'data-toggle' => 'tab', href: '#all', role: 'tab'}=  t 'appointments.all'
-.tab-content
+-# Dudes, can't you really not cleanup your views and make them all-haml??
+.page-header
+  %h1 Dashboard
+.col-xs-12
+  .row
+    %ul.nav.nav-tabs{role: :tablist}
+      %li.active{role: :presentation}
+        = link_to((t 'appointments.today'), '#today', role: 'tab', aria: {controls: :home}, data: {toggle: :tab})
+      %li{role: :presentation}
+        = link_to((t 'appointments.upcoming'), '#upcoming', role: 'tab', aria: {controls: :profile}, data: {toggle: :tab})
+      %li{role: :presentation}
+        = link_to((t 'appointments.past'), '#past', role: 'tab', aria: {controls: :messages}, data: {toggle: :tab})
+      %li{role: :presentation}
+        = link_to((t 'appointments.all'), '#all', role: 'tab', aria: {controls: :messages}, data: {toggle: :tab})
+    .tab-content
