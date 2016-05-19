@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   end
 
   def self.most_proactive
-    sm = User.salesmen.sort{ |x, y| x.interactions.count <=> y.interactions.count}
+    sm = User.includes(:interactions).salesmen.sort{ |x, y| x.interactions.count <=> y.interactions.count}
     sm.first
   end
 

@@ -18,8 +18,16 @@
           %br
           = quotation.unit_price
         %p
+          %strong= model_class.human_attribute_name(:counteroffer) + ':'
+          %br
+          = "%#{quotation.counteroffer}"
+        %p
           %strong= model_class.human_attribute_name(:full_price) + ':'
           %br
           = quotation.full_price
+        %p
+          %strong= model_class.human_attribute_name(:counteroffer_price) + ':'
+          %br
+          = quotation.counteroffer_price
       = link_to 'PDF' ,quotation_path(quotation),class: 'btn btn-danger',disabled: !still_valid
       = link_to 'Email' ,quotation_path(quotation),class: 'btn btn-default',disabled: !still_valid

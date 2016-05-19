@@ -5,4 +5,6 @@ user.salesman!
 
 c = Customer.create first_name: 'Omar', middle_name: 'de Yesus', last_name: 'Vasquez', marital_status: 'married',gender: 'male', salesman: User.first
 
+Interaction.create(kind: 'Phone',date: Date.today,time: Time.now,customer: c)
+
 Quotation.create(square_meters: 1000,unit_price: 1000,customer: c)
