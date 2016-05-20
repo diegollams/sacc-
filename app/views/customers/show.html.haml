@@ -31,7 +31,6 @@
     = link_to t('appointments.index.message'), appointments_path(customer_id: @customer.id), class: 'btn btn-default'
   #interactions.tab-pane.fade{role: 'tabpanel'}
     = render partial: 'interactions/interactions', locals: {interactions: @customer.interactions}
-    = link_to t('interactions.index.message'), interactions_path(customer_id: @customer.id), class: 'btn btn-default'
   #quotations.tab-pane.fade{role: 'tabpanel'}
     .row
       - if @customer.quotations.empty?
@@ -39,8 +38,6 @@
           = t('quotations.index.empty')
       - else
         = render @customer.quotations
-    .row
-      = link_to t('quotations.index.message'), quotations_path(customer_id: @customer.id), class: 'btn btn-default'
 = link_to t('.back', :default => t('helpers.links.back')), request.referrer, class: 'btn btn-default'
 = link_to t('.edit', :default => t('helpers.links.edit')), edit_customer_path(@customer), class: 'btn btn-default'
 = link_to t('.destroy', :default => t('helpers.links.destroy')), customer_path(@customer), method: 'delete', data: { confirm: t('.confirm', default: t('helpers.links.confirm', default: 'Are you sure?')) }, class: 'btn btn-danger'

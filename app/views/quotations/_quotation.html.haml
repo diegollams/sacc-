@@ -4,7 +4,8 @@
 %div{class: size}
   .panel.panel-default
     .panel-heading
-      = t 'date_range',start_date: quotation.created_at.strftime('%B  %d, %Y'),end_date: quotation.valid_until.strftime('%B  %d, %Y')
+      -customer = quotation.customer
+      =  t('quotations.valid_until', end_date: l(quotation.valid_until, format: :human_date), for: link_to(customer.fullname, customer_path(customer))).html_safe
       = check_fav still_valid
 
     .panel-body
@@ -29,5 +30,6 @@
           %strong= model_class.human_attribute_name(:counteroffer_price) + ':'
           %br
           = quotation.counteroffer_price
-      = link_to 'PDF' ,quotation_path(quotation),class: 'btn btn-danger',disabled: !still_valid
-      = link_to 'Email' ,quotation_path(quotation),class: 'btn btn-default',disabled: !still_valid
+      = link_to 'PDF' , quotation_path(quotation), class: 'btn btn-danger',disabled: !still_valid
+      = link_to 'Sale' , quotation_path(quotation), class: 'btn btn-primary',disabled: !still_valid
+      = link_to 'Email' , quotation_path(quotation), class: 'btn btn-default',disabled: !still_valid

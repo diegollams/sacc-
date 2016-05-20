@@ -19,9 +19,19 @@
       %li
         = link_to users_path do
           %i{class: 'fa fa-star fa-fw'}
-          = User.model_name.human.pluralize.titleize # Could we say Salesman here? send it to YAML i18n
+          = User.model_name.human.pluralize.titleize # Could we say Salesman here? send it to YAML i18n:Done atte llamas
       %li
         = link_to customers_path do
           %i{class: 'fa fa-users fa-fw'}
           = Customer.model_name.human.pluralize.titleize
+      %li
+        = link_to '#' do
+          %span{class: 'fa arrow'}
+          %i{class: 'fa fa-line-chart  fa-fw'}
+          = 'Statistics'
+        %ul{class: 'nav nav-second-level collapse in'}
+          %li
+            = link_to t('interactions.index.message'), interactions_path
+          %li
+            = link_to t('quotations.index.message'), quotations_path
 

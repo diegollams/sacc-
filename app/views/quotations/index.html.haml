@@ -1,8 +1,8 @@
 - model_class = Quotation
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-= render partial: 'common/panel',locals: {message: t('quotations.index.count'), heading: t('quotations.index.all', count: Quotation.all.count),favicon: 'comments'}
-= render partial: 'common/panel',locals: {message: t('quotations.index.this_month'), heading: t('quotations.index.all', count: Quotation.from_month(Time.now).count),favicon: 'comments',class_color: 'success'}
+= render partial: 'common/panel',locals: {message: t('quotations.index.count'), heading: t('quotations.index.all', count: Quotation.all.count),favicon: 'usd'}
+= render partial: 'common/panel',locals: {message: t('quotations.index.this_month'), heading: t('quotations.index.all', count: Quotation.from_month(Time.now).count),favicon: 'usd',class_color: 'success'}
 
 %table.table.table-striped
   %thead
@@ -23,7 +23,7 @@
         %td= quotation.square_meters
         %td= quotation.unit_price
         %td= quotation.full_price
-        %td= valid ? quotation.valid_until.strftime('%B  %d, %Y') : t('quotations.invalid')
+        %td= valid ? l(quotation.valid_until,format: :human_date): t('quotations.invalid')
         %td
           = link_to t('.show',default: t("helpers.links.show")), quotation_path(quotation),class: 'btn btn-primary btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_quotation_path(quotation,customer_id: quotation.customer_id), :class => 'btn btn-default btn-xs'

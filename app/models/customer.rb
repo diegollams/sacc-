@@ -23,7 +23,7 @@ class Customer < ActiveRecord::Base
   ####################### Instance Methods ########################
   def to_builder
     Jbuilder.new do |customer|
-      customer.register_date created_at.strftime('%B %d, %Y')
+      customer.register_date created_at.strftime(I18n.t('date.formats.human_date'))
       customer.(self, :id, :first_name, :middle_name, :last_name, :marital_status, :email, :gender, :spouse, :zipcode, :salesman_id,:main_phone,:secondary_phone)
     end
   end

@@ -15,16 +15,16 @@
       %p
         %strong= model_class.human_attribute_name(:date) + ':'
         %br
-        = l @interaction.date, format: :strformat_date
+        = l @interaction.date, format: :human_date
       %p
         %strong= model_class.human_attribute_name(:time) + ':'
         %br
-        = l @interaction.time, format: :strformat_time
+        = l @interaction.time, format: :human_time
     .col-md-6
       %p
         %strong= model_class.human_attribute_name(:observation).pluralize + ':'
         %br
-        = @interaction.observation
+        = ul_list @interaction.observation.split('-')
 
 
 = link_to t('.back', default: t("helpers.links.back")), request.referrer, class: 'btn btn-default'

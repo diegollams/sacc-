@@ -22,11 +22,15 @@
 en:
   time:
     formats:
-      strformat_time: "%I:%M %p"
+      human_time: "%I:%M %p"
   date:
     formats:
-      strformat_date: "%B %d, %Y"
-  date_range: "Starts at %{start_date} ends at %{end_date}."
+      human_date: "%B %d, %Y"
+  activerecord:
+    models:
+      user:
+        one: 'Salesman'
+        other: 'Salesmen'
   sign_out: "Sign out"
   interactions:
     new:
@@ -53,6 +57,7 @@ en:
     past: "Past"
     all: "All"
   quotations:
+    valid_until: "Valid until %{end_date} for %{for}. "
     new:
       message: "New Quotation"
     index:

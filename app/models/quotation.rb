@@ -13,13 +13,18 @@ class Quotation < ActiveRecord::Base
   default_scope {order('created_at DESC')}
   scope :from_customer , ->(customer_id) {where( customer_id: customer_id).order(created_at: :asc)}
   scope :from_month, ->(date) {where(created_at: date.beginning_of_month..date.end_of_month)}
-
+  after_create :generate_interaction
   #-- Instance Methods
   def  validate_counteroffer
     if counteroffer > 100 or counteroffer < 0
       # make i18 string
       errors.add(:counteroffer,'must be beetwen 0 and 100')
     end
+  end
+
+  def generate_interaction
+    observations = "-Precio terreno: #{full_price} -Precio con descuento: #{counteroffer_price} -Metros: #{square_meters} -Precio por metro: #{unit_price}"
+    Interaction.create(kind: :quotation,date: Date.today,time: Time.now, customer: customer,observation: observations)
   end
 
   def full_price
@@ -31,7 +36,7 @@ class Quotation < ActiveRecord::Base
   end
 
   def valid_until
-   created_at + VALID_AFTER.days
+   created_at.to_date + VALID_AFTER.days
   end
 
   def still_valid?(date)

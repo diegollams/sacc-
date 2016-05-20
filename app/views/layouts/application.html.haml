@@ -22,5 +22,6 @@
       = render partial: 'common/navbar'
       #page-wrapper{style: 'padding: 10px 0 0 10px;'}
         = bootstrap_flash
-        = yield
+        .container-fluid
+          = yield
       / # = render partial: 'common/footer'
