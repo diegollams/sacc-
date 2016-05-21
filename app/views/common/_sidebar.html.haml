@@ -2,26 +2,26 @@
   %div{class: 'sidebar-nav navbar-collapse'}
     %ul{id: 'side-menu', class: 'nav'}
       %li{class: 'sidebar-search'}
-        /this is just a placeholder, gonna change for a real rails object
+        /this is just a placeholder, gonna change for a react object, someday
         %div{class: 'input-group custom-search-form', id: 'search'}
           %input{type: 'text', class: 'form-control', placeholder: 'Search...'}
           %span{class: 'input-group-btn'}
             %button{class: 'btn btn-default'}
               %i{class: 'fa fa-search'}
       %li
-        =link_to root_path, class: current_page?(root_path) ? 'active' : '' do
+        =link_to root_path, class: check_active_link(root_path) do
           %i{class: 'fa fa-dashboard fa-fw'}
           Dashboard
       %li
-        = link_to lots_path, class: current_page?(lots_path) ? 'active' : '' do
+        = link_to lots_path, class: check_active_link(lots_path) do
           %i{class: 'fa fa-flag fa-fw'}
           = Lot.model_name.human.pluralize.titleize
       %li
-        = link_to users_path, class: current_page?(users_path) ? 'active' : '' do
+        = link_to users_path, class: check_active_link(users_path) do
           %i{class: 'fa fa-star fa-fw'}
-          = User.model_name.human.pluralize.titleize # Could we say Salesman here? send it to YAML i18n:Done atte llamas
+          = User.model_name.human.pluralize.titleize
       %li
-        = link_to customers_path, class: current_page?(customers_path) ? 'active' : '' do
+        = link_to customers_path, class: check_active_link(customers_path) do
           %i{class: 'fa fa-users fa-fw'}
           = Customer.model_name.human.pluralize.titleize
       %li
@@ -31,7 +31,7 @@
           = 'Statistics'
         %ul{class: 'nav nav-second-level', aria: {expanded: false}}
           %li
-            = link_to t('interactions.index.message'), interactions_path, class: current_page?(interactions_path) ? 'active' : ''
+            = link_to t('interactions.index.message'), interactions_path, class: check_active_link(interactions_path)
           %li
-            = link_to t('quotations.index.message'), quotations_path, class: current_page?(quotations_path) ? 'active' : ''
+            = link_to t('quotations.index.message'), quotations_path, class: check_active_link(quotations_path)
 
