@@ -9,19 +9,19 @@
             %button{class: 'btn btn-default'}
               %i{class: 'fa fa-search'}
       %li
-        =link_to root_path do
+        =link_to root_path, class: current_page?(root_path) ? 'active' : '' do
           %i{class: 'fa fa-dashboard fa-fw'}
           Dashboard
       %li
-        = link_to lots_path do
+        = link_to lots_path, class: current_page?(lots_path) ? 'active' : '' do
           %i{class: 'fa fa-flag fa-fw'}
           = Lot.model_name.human.pluralize.titleize
       %li
-        = link_to users_path do
+        = link_to users_path, class: current_page?(users_path) ? 'active' : '' do
           %i{class: 'fa fa-star fa-fw'}
           = User.model_name.human.pluralize.titleize # Could we say Salesman here? send it to YAML i18n:Done atte llamas
       %li
-        = link_to customers_path do
+        = link_to customers_path, class: current_page?(customers_path) ? 'active' : '' do
           %i{class: 'fa fa-users fa-fw'}
           = Customer.model_name.human.pluralize.titleize
       %li
@@ -31,7 +31,7 @@
           = 'Statistics'
         %ul{class: 'nav nav-second-level', aria: {expanded: false}}
           %li
-            = link_to t('interactions.index.message'), interactions_path
+            = link_to t('interactions.index.message'), interactions_path, class: current_page?(interactions_path) ? 'active' : ''
           %li
-            = link_to t('quotations.index.message'), quotations_path
+            = link_to t('quotations.index.message'), quotations_path, class: current_page?(quotations_path) ? 'active' : ''
 
