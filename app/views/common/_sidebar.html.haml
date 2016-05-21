@@ -8,7 +8,7 @@
           %span{class: 'input-group-btn'}
             %button{class: 'btn btn-default'}
               %i{class: 'fa fa-search'}
-      %li.active
+      %li
         =link_to root_path do
           %i{class: 'fa fa-dashboard fa-fw'}
           Dashboard
@@ -29,7 +29,7 @@
           %span{class: 'fa arrow'}
           %i{class: 'fa fa-line-chart  fa-fw'}
           = 'Statistics'
-        %ul{class: 'nav nav-second-level collapse in'}
+        %ul{class: 'nav nav-second-level', aria: {expanded: false}}
           %li
             = link_to t('interactions.index.message'), interactions_path
           %li
