@@ -9,27 +9,19 @@
             %button{class: 'btn btn-default'}
               %i{class: 'fa fa-search'}
       %li
-        =link_to root_path, class: check_active_link(root_path) do
-          %i{class: 'fa fa-dashboard fa-fw'}
-          Dashboard
+        = combo_link_to(root_path, 'dashboard', 'Dashboard')
       %li
-        = link_to lots_path, class: check_active_link(lots_path) do
-          %i{class: 'fa fa-flag fa-fw'}
-          = Lot.model_name.human.pluralize.titleize
+        = combo_link_to(lots_path, 'flag', nil, Lot)
       %li
-        = link_to users_path, class: check_active_link(users_path) do
-          %i{class: 'fa fa-star fa-fw'}
-          = User.model_name.human.pluralize.titleize
+        = combo_link_to(users_path, 'star', nil, User)
       %li
-        = link_to customers_path, class: check_active_link(customers_path) do
-          %i{class: 'fa fa-users fa-fw'}
-          = Customer.model_name.human.pluralize.titleize
+        = combo_link_to(customers_path, 'users', nil, Customer)
       %li
         = link_to '#' do
           %span{class: 'fa arrow'}
           %i{class: 'fa fa-line-chart  fa-fw'}
           = 'Statistics'
-        %ul{class: 'nav nav-second-level', aria: {expanded: false}}
+        %ul{class: 'nav nav-second-level'}
           %li
             = link_to t('interactions.index.message'), interactions_path, class: check_active_link(interactions_path)
           %li
