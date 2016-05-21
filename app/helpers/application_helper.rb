@@ -9,7 +9,7 @@ module ApplicationHelper
     current_page?(path) ? 'active' : '' 
   end
 
-  def combo_link_to(path, icon = 'warning-exclamation', label = nil, klass = nil)
+  def combo_link_to(path, icon = 'exclamation-triangle', label = nil, klass = nil)
     icn = content_tag(:i, '', class: "fa fa-#{icon} fa-fw")
     lbl = label || klass.model_name.human.pluralize.titleize
     link_to path, class: check_active_link(path) do

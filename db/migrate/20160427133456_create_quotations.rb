@@ -5,7 +5,7 @@ class CreateQuotations < ActiveRecord::Migration
       t.references :lot, index: true, foreign_key: true
       t.decimal :square_meters
       t.decimal :unit_price
-      t.decimal :counteroffer
+      t.decimal :counteroffer, default: 0.0
 
       t.timestamps null: false
     end

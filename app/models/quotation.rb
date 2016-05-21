@@ -1,6 +1,6 @@
 class Quotation < ActiveRecord::Base
   #-- Validations
-  validates :unit_price,:square_meters,:customer_id, :counteroffer, presence: true
+  validates :unit_price, :square_meters, :customer_id, :counteroffer, presence: true
   validate :validate_counteroffer
   #-- Active Relations
   belongs_to :customer
@@ -16,9 +16,10 @@ class Quotation < ActiveRecord::Base
   after_create :generate_interaction
   #-- Instance Methods
   def  validate_counteroffer
-    if counteroffer > 100 or counteroffer < 0
-      # make i18 string
-      errors.add(:counteroffer,'must be beetwen 0 and 100')
+    case counteroffer
+    when (0..100)
+    else
+      errors.add(:counteroffer, 'must be between 0 and 100')
     end
   end
 
@@ -32,7 +33,7 @@ class Quotation < ActiveRecord::Base
   end
 
   def counteroffer_price
-    (full_price * (100 -counteroffer)) / 100
+    (full_price * (100 - counteroffer)) / 100
   end
 
   def valid_until
