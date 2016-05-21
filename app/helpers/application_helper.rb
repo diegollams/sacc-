@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def combo_link_to(path, icon = 'exclamation-triangle', label = nil, klass = nil)
     icn = content_tag(:i, '', class: "fa fa-#{icon} fa-fw")
-    lbl = label || klass.model_name.human.pluralize.titleize
+    lbl = label || klass.model_name.human.pluralize.titleize # hmm, maybe it's better to pass the Class as label, kinda smells 
     link_to path, class: check_active_link(path) do
       [icn, lbl].join.html_safe
     end
