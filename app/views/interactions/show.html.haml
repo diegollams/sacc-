@@ -5,7 +5,7 @@
 .panel.panel-default
   .panel-heading
     = t('interactions.show.message')
-    = link_to @interaction.customer.fullname, @interaction.customer
+    = link_to @customer.fullname, @customer
   .panel-body
     .col-md-6
       %p
@@ -24,7 +24,7 @@
       %p
         %strong= model_class.human_attribute_name(:observation).pluralize + ':'
         %br
-        = ul_list @interaction.observation.split('-')
+        = ul_list @observation_list
 
 
 = link_to t('.back', default: t("helpers.links.back")), request.referrer, class: 'btn btn-default'

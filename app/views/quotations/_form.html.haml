@@ -1,5 +1,6 @@
 = simple_form_for @quotation, :html => { :class => 'form-horizontal' } do |f|
   = f.input :customer_id, input_html: {value: @customer.id},as: :hidden
+  = f.input :lot_id,collection: Lot.all.collect { |lot| [lot.to_s,lot.id]}
   = f.input :square_meters
   = f.input :unit_price
   = f.input :counteroffer,placeholder: t('quotations.form.counteroffer_input')

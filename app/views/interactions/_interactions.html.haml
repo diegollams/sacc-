@@ -12,11 +12,11 @@
     - interactions.each do |interaction|
       %tr
         %td= interaction.kind
-        %td= ul_list interaction.observation.split('-')
+        %td= ul_list interaction.observation_list
         %td= l interaction.date, format: :human_date
         %td= l interaction.time, format: :human_time
         -#add a column to display salesman maybe? atte llamas
-        %td= link_to interaction.customer.fullname,customer_path(interaction.customer)
+        %td= link_to interaction.customer.fullname, customer_path(interaction.customer)
         %td
           = link_to t('.show', :default => t("helpers.links.show")), interaction_path(interaction), :class => 'btn btn-primary btn-xs'
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_interaction_path(interaction,customer_id: interaction.customer_id), :class => 'btn btn-default btn-xs'

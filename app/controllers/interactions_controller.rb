@@ -3,30 +3,25 @@ class InteractionsController < ApplicationController
   load_and_authorize_resource
   before_action :set_interaction, only: [:show, :edit, :update, :destroy]
   before_action :set_customer,only: [:new]
-  # GET /interactions
-  # GET /interactions.json
+
   def index
     @interactions = Interaction.all
     @most_proactive = User.most_proactive
   end
 
-  # GET /interactions/1
-  # GET /interactions/1.json
   def show
+    @customer = @interaction.customer
+    @observation_list = @interaction.observation_list
   end
 
-  # GET /interactions/new
   def new
     @interaction = Interaction.new
   end
 
-  # GET /interactions/1/edit
   def edit
     @customer = @interaction.customer
   end
 
-  # POST /interactions
-  # POST /interactions.json
   def create
     @interaction = Interaction.new(interaction_params)
     @customer = @interaction.customer
@@ -41,8 +36,6 @@ class InteractionsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /interactions/1
-  # PATCH/PUT /interactions/1.json
   def update
     respond_to do |format|
       @customer = @interaction.customer
@@ -56,8 +49,6 @@ class InteractionsController < ApplicationController
     end
   end
 
-  # DELETE /interactions/1
-  # DELETE /interactions/1.json
   def destroy
 
     @interaction.destroy
@@ -72,12 +63,11 @@ class InteractionsController < ApplicationController
     def set_customer
       @customer = Customer.find params[:customer_id]
     end
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_interaction
       @interaction = Interaction.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def interaction_params
       params.require(:interaction).permit(:kind, :observation, :date, :time, :customer_id)
     end

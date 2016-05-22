@@ -2,36 +2,28 @@
   %div{class: 'sidebar-nav navbar-collapse'}
     %ul{id: 'side-menu', class: 'nav'}
       %li{class: 'sidebar-search'}
-        /this is just a placeholder, gonna change for a real rails object
+        /this is just a placeholder, gonna change for a react object, someday
         %div{class: 'input-group custom-search-form', id: 'search'}
           %input{type: 'text', class: 'form-control', placeholder: 'Search...'}
           %span{class: 'input-group-btn'}
             %button{class: 'btn btn-default'}
               %i{class: 'fa fa-search'}
-      %li.active
-        =link_to root_path do
-          %i{class: 'fa fa-dashboard fa-fw'}
-          Dashboard
       %li
-        = link_to lots_path do
-          %i{class: 'fa fa-flag fa-fw'}
-          = Lot.model_name.human.pluralize.titleize
+        = combo_link_to(root_path, 'dashboard', 'Dashboard')
       %li
-        = link_to users_path do
-          %i{class: 'fa fa-star fa-fw'}
-          = User.model_name.human.pluralize.titleize # Could we say Salesman here? send it to YAML i18n:Done atte llamas
+        = combo_link_to(lots_path, 'flag', nil, Lot)
       %li
-        = link_to customers_path do
-          %i{class: 'fa fa-users fa-fw'}
-          = Customer.model_name.human.pluralize.titleize
+        = combo_link_to(users_path, 'star', nil, User)
       %li
-        = link_to '#' do
+        = combo_link_to(customers_path, 'users', nil, Customer)
+      %li
+        = link_to nil do
           %span{class: 'fa arrow'}
           %i{class: 'fa fa-line-chart  fa-fw'}
           = 'Statistics'
-        %ul{class: 'nav nav-second-level collapse in'}
+        %ul{class: 'nav nav-second-level'}
           %li
-            = link_to t('interactions.index.message'), interactions_path
+            = link_to t('interactions.index.message'), interactions_path, class: check_active_link(interactions_path)
           %li
-            = link_to t('quotations.index.message'), quotations_path
+            = link_to t('quotations.index.message'), quotations_path, class: check_active_link(quotations_path)
 

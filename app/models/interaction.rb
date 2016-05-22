@@ -4,4 +4,8 @@ class Interaction < ActiveRecord::Base
   validates :kind,:date,:time,:customer_id,presence: true
 
   default_scope {order('created_at DESC')}
+
+  def observation_list
+    observation.try(:split, ('-'))
+  end
 end
