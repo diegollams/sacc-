@@ -25,11 +25,11 @@
         %p
           %strong= model_class.human_attribute_name(:full_price) + ':'
           %br
-          = quotation.full_price
+          = number_to_currency quotation.full_price
         %p
           %strong= model_class.human_attribute_name(:counteroffer_price) + ':'
           %br
-          = quotation.counteroffer_price
+          = number_to_currency  quotation.counteroffer_price
       = link_to 'PDF' , quotation_path(quotation), class: 'btn btn-danger',disabled: !still_valid
       = link_to 'Sale' , quotation_path(quotation), class: 'btn btn-primary',disabled: !still_valid
       = link_to 'Email' , quotation_path(quotation), class: 'btn btn-default',disabled: !still_valid

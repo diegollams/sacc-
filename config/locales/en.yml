@@ -57,6 +57,7 @@ en:
     past: "Past"
     all: "All"
   quotations:
+    interaction_observation: "-Full price: %{full_price} -Counteroffer price: %{counteroffer_price} -Square_meters: %{square_meters} -Unit price: %{unit_price}"
     valid_until: "Valid until %{end_date} for %{for}. "
     new:
       message: "New Quotation"

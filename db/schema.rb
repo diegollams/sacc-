@@ -50,12 +50,12 @@ ActiveRecord::Schema.define(version: 20160427133456) do
 
   create_table "interactions", force: :cascade do |t|
     t.string   "kind"
-    t.text     "observation"
+    t.text     "observation", default: ""
     t.date     "date"
     t.time     "time"
     t.integer  "customer_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "interactions", ["customer_id"], name: "index_interactions_on_customer_id", using: :btree
