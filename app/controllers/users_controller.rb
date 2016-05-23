@@ -11,7 +11,8 @@ class UsersController < ApplicationController
   end
 
   def appointments
-    @appointments = @user.appointments
+    @appointments = @user.appointments_of(params[:date])
+    @date = params[:date].to_date
     respond_to do |format|
       format.html
       format.js

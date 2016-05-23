@@ -8,3 +8,4 @@
     %p.empty-day
       = date.day
 #appointments-list
+  = render partial: "users/appointments/appointments", locals: { date: Date.today, appointments: current_user.appointments_of(Date.today)}

@@ -15,14 +15,19 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,:lockable,
          :recoverable, :rememberable, :trackable, :validatable
   #################### Class Methods / Scopes #####################
-  def is_my_customer?(customer)
-    # admin can control of all customers
-    admin? or customer.id == id
-  end
 
   def self.most_proactive
     sm = User.includes(:interactions).salesmen.sort{ |x, y| x.interactions.count <=> y.interactions.count}
     sm.first
   end
 
+  ####################### Instance Methods ########################
+  def is_my_customer?(customer)
+    # admin can control of all customers
+    admin? or customer.id == id
+  end
+
+  def appointments_of(date)
+    appointments.where(date: date)
+  end
 end

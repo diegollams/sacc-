@@ -55,10 +55,11 @@ en:
       message: "New appointment"
     index:
       message: "All appointments"
-    today: "Today"
-    upcoming: "Upcoming"
-    past: "Past"
-    all: "All"
+    today: "today"
+    upcoming: "upcoming"
+    past: "past"
+    all: "all"
+    you_will_see: "You will see this client %{date} at %{time}."
   quotations:
     interaction_observation: "-Full price: %{full_price} -Counteroffer price: %{counteroffer_price} -Square_meters: %{square_meters} -Unit price: %{unit_price}"
     valid_until: "Valid until %{end_date} for %{for}. "

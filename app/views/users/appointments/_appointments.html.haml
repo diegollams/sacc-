@@ -1,1 +1,10 @@
-%p Appointments
+.text-center
+.panel.panel-default
+  .panel-heading
+    %i.fa.fa-tasks.fa-fw
+    = ((date - Date.today).days == 0 ? t('today') : date)
+  .panel-body
+    %ul.chat
+      - appointments.each do |appointment|
+        = render partial: 'users/appointments/appointment', locals: {appointment: appointment}
+  .panel-footer
