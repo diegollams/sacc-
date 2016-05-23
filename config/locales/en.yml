@@ -114,6 +114,9 @@ en:
       this_month: "This month customers"
   helpers:
     search: "Search"
+    cancel: "Cancel"
+    done: "Done"
+    renew: "Renew"
   panel:
     link_message: "View Details"
   simple_calendar:

@@ -1,6 +1,7 @@
 class Appointment < ActiveRecord::Base
 ######################### Validations ##########################
     validates :customer_id, :date, :time, :place, presence: true
+    enum status: { upcoming: "upcoming", canceled: "canceled", done: "done" }
 
 ####################### Active Relations ########################
     belongs_to :customer
@@ -16,6 +17,10 @@ class Appointment < ActiveRecord::Base
 
     def start_time
         date
+    end
+
+    def passed?
+        date <= Date.today && time.seconds_since_midnight <= Time.now.seconds_since_midnight
     end
 
 end
