@@ -29,7 +29,6 @@ var CustomerShow = React.createClass({
                 <label>Customer progress: </label>
                 <div className="progress">
                     <div className="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style={{width: progress}}>
-                        <span className="sr-only">60% Complete</span>
                     </div>
                 </div>
             </div>
