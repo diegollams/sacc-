@@ -13,11 +13,12 @@ class Customer < ActiveRecord::Base
 
   delegate :name, to: :salesman, prefix: true, allow_nil: true
   #################### Class Methods / Scopes #####################
+  scope :from_month, ->(date) {where(created_at: date.beginning_of_month..date.end_of_month)}
   scope :search , ->(search){
       if search.blank?
         all
       else
-        includes(:appointments,:interactions).where('(customers.first_name || \' \' || customers.middle_name || \' \' || customers.last_name) ILIKE ? ', "%#{search}%")
+        includes(:appointments,:interactions).where('(customers.first_name || \' \' || customers.middle_name || \' \' || customers.last_name) ILIKE ? or spouse ILIKE ?', "%#{search}%", "%#{search}%")
       end
   }
   ####################### Instance Methods ########################

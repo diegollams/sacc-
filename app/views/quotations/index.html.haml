@@ -1,8 +1,8 @@
 - model_class = Quotation
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
-= render partial: 'common/panel',locals: {message: t('quotations.index.count'), heading: t('quotations.index.all', count: Quotation.all.count),favicon: 'usd'}
-= render partial: 'common/panel',locals: {message: t('quotations.index.this_month'), heading: t('quotations.index.all', count: Quotation.from_month(Time.now).count),favicon: 'usd',class_color: 'success'}
+= render partial: 'common/panel',locals: {message: t('quotations.index.count'), heading: Quotation.all.count,favicon: 'usd'}
+= render partial: 'common/panel',locals: {message: t('quotations.index.this_month'), heading:  Quotation.from_month(Time.now).count, favicon: 'usd', class_color: 'green'}
 
 %table.table.table-striped
   %thead

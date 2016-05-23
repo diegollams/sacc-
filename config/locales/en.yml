@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  count_new:
+    one: '%{count} new'
+    other: '%{count} new'
   time:
     formats:
       human_time: "%I:%M %p"
@@ -43,6 +46,7 @@ en:
       message: "All interactions"
       count: "Total of interactions"
       all: "All: %{count}"
+      this_month: "This month interactions"
     show:
       message: "Interaction with"
   appointments:
@@ -55,6 +59,7 @@ en:
       message: "New appointment"
     index:
       message: "All appointments"
+      this_month: "This month appointments"
     today: "today"
     upcoming: "upcoming"
     past: "past"
@@ -93,14 +98,18 @@ en:
       empty: "No quotations yet."
       count: "Total quotations"
       all: "All: %{count}"
-      this_month: "This month"
+      this_month: "This month quotations"
     invalid: "Invalid quotation"
     form:
       counteroffer_input: "% percentage"
   customers:
     info: "Personal Information"
+    index:
+      this_month: "This month customers"
   helpers:
     search: "Search"
+  panel:
+    link_message: "View Details"
   simple_calendar:
     next: "Next"
     previous: "Previous"

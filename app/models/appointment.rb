@@ -11,6 +11,7 @@ class Appointment < ActiveRecord::Base
     scope :same_date, ->(date) {where(date: date)}
     scope :after_date, ->(date) {where('date > ?', date)}
     scope :before_date, ->(date) {where('date < ?', date)}
+    scope :from_month, ->(date) {where(date: date.beginning_of_month..date.end_of_month)}
 
 ####################### Instance Methods ########################
 
