@@ -3,7 +3,7 @@
   = (t 'appointments.appointment', count: "other").humanize + ((' ' + t('appointments.with') + ' ' + @customer.fullname) unless @customer.nil?).to_s
 = month_calendar events: @appointments do |date, appointments|
   - if !appointments.empty?
-    = button_to date.day, {controller: 'appointments', action: 'index', date: date, customer_id: (@customer.id unless @customer.nil?)}, method: 'get', remote: true
+    = button_to date.day, {controller: 'appointments', action: 'index', date: date, customer_id: (@customer.id unless @customer.nil?)}, method: 'get', remote: true, class: 'btn-outline btn-info appointed-day'
   -else
     %p.empty-day
       = date.day
