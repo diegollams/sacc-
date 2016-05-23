@@ -34,6 +34,7 @@ en:
     last_month: "last month"
     tomorrow: "tomorrow"
     yesterday: "yesterday"
+    today: "today"
     seconds:
       one: "second"
       other: "seconds"
@@ -55,7 +56,7 @@ en:
   date:
     formats:
       human_date: "%B %d, %Y"
-    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    day_names: [sunday, monday, tuesday, wednesday, thursday, friday, saturday]
     abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
     month_names: [January, February, March, April, May, June, July, August, September, October, November, December]
   activerecord:
@@ -86,13 +87,12 @@ en:
     index:
       message: "All appointments"
       this_month: "This month appointments"
-    today: "today"
     upcoming: "upcoming"
     past: "past"
     all: "all"
     with: "with"
-    you_will_see: "You will see this client %{date} at %{time}, %{in} %{place}."
-    on: "on"
+    you_will_see: "You will see this client at %{time}, %{in} %{place}."
+    you_saw: "The appointment took place at %{time}, %{in} %{place}."
     in: "in"
   quotations:
     interaction_observation: "-Full price: %{full_price} -Counteroffer price: %{counteroffer_price} -Square_meters: %{square_meters} -Unit price: %{unit_price}"

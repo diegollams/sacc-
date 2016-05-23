@@ -2,7 +2,6 @@ module AppointmentsHelper
 
   def time_distance_to_now(appointment)
     distance = (appointment.date - Date.today).to_i
-    puts appointment.date - Date.today
     #Years
     years = distance / 365.0
     if years.to_i > 0
@@ -55,7 +54,6 @@ module AppointmentsHelper
     end
 
     distance = (appointment.time.seconds_since_midnight - Time.now.seconds_since_midnight)
-    puts appointment.time
 
     #Hours
     hours = distance / 3600
@@ -83,5 +81,21 @@ module AppointmentsHelper
     if seconds <= -1
       return t 'time.ago', time: (-seconds).round.to_s + ' ' + t('time.seconds', count: (-seconds).round)
     end
+  end
+
+  def month_day_format(date)
+    distance = (date - Date.today).to_i
+
+    if distance.to_i == 0
+      return (t 'time.today').humanize
+    end
+    if distance.to_i == 1
+      return (t 'time.tomorrow').humanize
+    end
+    if distance.to_i == -1
+      return (t 'time.yesterday').humanize
+    end
+
+    (t('date.day_names')[date.wday]).humanize + ', ' + date.day.to_s
   end
 end

@@ -6,4 +6,7 @@
         %i.fa.fa-clock-o.fa-fw
         = time_distance_to_now appointment
     %p
-      = t "appointments.you_will_see", date: ((appointment.date - Date.today).days == 0 ? t('appointments.today') : t('appointments.on') + ' ' + appointment.date.to_s), time: l(appointment.time, format: :human_time), in: t('appointments.in'), place: appointment.place
+      - if (appointment.date - Date.today) >= 0
+        = t "appointments.you_will_see", time: l(appointment.time, format: :human_time), in: t('appointments.in'), place: appointment.place
+      - else
+        = t "appointments.you_saw", time: l(appointment.time, format: :human_time), in: t('appointments.in'), place: appointment.place

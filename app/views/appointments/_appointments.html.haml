@@ -2,7 +2,7 @@
 .panel.panel-default
   .panel-heading
     %i.fa.fa-tasks.fa-fw
-    = ((date - Date.today).days == 0 ? t('today') : date)
+    = month_day_format date
   .panel-body
     %ul.chat
       - appointments.each do |appointment|
