@@ -26,6 +26,32 @@ en:
   time:
     formats:
       human_time: "%I:%M %p"
+    from_now: "%{time} from now"
+    ago: "%{time} ago"
+    next_year: "next year"
+    last_year: "last year"
+    next_month: "next month"
+    last_month: "last month"
+    tomorrow: "tomorrow"
+    yesterday: "yesterday"
+    seconds:
+      one: "second"
+      other: "seconds"
+    minutes:
+      one: "minute"
+      other: "minutes"
+    hours:
+      one: "hour"
+      other: "hours"
+    days:
+      one: "day"
+      other: "days"
+    months:
+      one: "month"
+      other: "months"
+    years:
+      one: "year"
+      other: "years"
   date:
     formats:
       human_date: "%B %d, %Y"
@@ -68,26 +94,6 @@ en:
     you_will_see: "You will see this client %{date} at %{time}, %{in} %{place}."
     on: "on"
     in: "in"
-    seconds:
-      one: "second"
-      other: "seconds"
-    minutes:
-      one: "minute"
-      other: "minutes"
-    hours:
-      one: "hour"
-      other: "hours"
-    days:
-      one: "day"
-      other: "days"
-    month:
-      one: "month"
-      other: "months"
-    years:
-      one: "year"
-      other: "years"
-    from_now: "%{time} from now"
-    ago: "%{time} ago" 
   quotations:
     interaction_observation: "-Full price: %{full_price} -Counteroffer price: %{counteroffer_price} -Square_meters: %{square_meters} -Unit price: %{unit_price}"
     valid_until: "Valid until %{end_date} for %{for}. "
