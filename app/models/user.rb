@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :customers, class_name: 'Customer', foreign_key: 'salesman_id',dependent: :nullify
   has_many :interactions, through: :customers
-  has_many :appointments
+  has_many :appointments, through: :customers
   royce_roles %w[ admin staff salesman ] # roles names were arbitrary selected, consensus required
 
   devise :database_authenticatable,:lockable,

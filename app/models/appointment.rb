@@ -4,7 +4,7 @@ class Appointment < ActiveRecord::Base
 
 ####################### Active Relations ########################
     belongs_to :customer
-    belongs_to :user
+    has_one :user, through: :customer
 
 #################### Class Methods / Scopes #####################
     scope :from_customer, ->(customer) {where( customer_id: customer.id).order(date: :asc, time: :asc)}
