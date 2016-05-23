@@ -29,11 +29,14 @@ en:
   date:
     formats:
       human_date: "%B %d, %Y"
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+    month_names: [January, February, March, April, May, June, July, August, September, October, November, December]
   activerecord:
     models:
       user:
-        one: 'Salesman'
-        other: 'Salesmen'
+        one: "Salesman"
+        other: "Salesmen"
   sign_out: "Sign out"
   interactions:
     new:
@@ -83,3 +86,6 @@ en:
     search: "Search"
   panel:
     link_message: "View Details"
+  simple_calendar:
+    next: "Next"
+    previous: "Previous"
