@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
     admin? or customer.id == id
   end
 
-  def appointments_of(date)
-    appointments.where(date: date)
+  def appointments_of(date = nil)
+    date.nil? ? appointments : appointments.where(date: date);
   end
 end

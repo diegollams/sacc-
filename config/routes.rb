@@ -7,9 +7,7 @@ Rails.application.routes.draw do
   resources :interactions
   resources :lots
   resources :customers
-  resources :users do
-    get 'appointments', on: :member
-  end
+  resources :users
   get 'dashboard/index'
 
   root 'dashboard#index'

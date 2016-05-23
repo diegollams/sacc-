@@ -18,4 +18,13 @@ class Appointment < ActiveRecord::Base
         date
     end
 
+    def time_distance
+        date_time = (date.to_s + " " + time.to_s).to_time
+        distance = date_time - Time.now
+        if distance > 0
+            t 'appointments.from_now', time: ActionView::Helpers::DateHelper::distance_of_time_in_words_to_now(date_time)
+        else
+        end
+    end
+
 end

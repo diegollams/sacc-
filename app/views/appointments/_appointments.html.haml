@@ -6,5 +6,5 @@
   .panel-body
     %ul.chat
       - appointments.each do |appointment|
-        = render partial: 'users/appointments/appointment', locals: {appointment: appointment}
+        = render partial: 'appointment', locals: {appointment: appointment}
   .panel-footer

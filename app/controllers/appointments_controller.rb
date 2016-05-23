@@ -1,11 +1,25 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:index]
 
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = current_user.appointments
+    @date = params[:date].nil? ? Date.today : params[:date].to_date
+    if !@customer.nil?
+      @appointments = @customer.appointments
+      @date_appointments = @customer.appointments_of @date
+    else
+      @appointments = current_user.appointments
+      @date_appointments = current_user.appointments_of @date
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+      format.json
+    end
   end
 
   # GET /appointments/1
@@ -67,6 +81,10 @@ class AppointmentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment
       @appointment = Appointment.find(params[:id])
+    end
+
+    def set_customer
+      @customer = Customer.find(params[:customer_id]) unless params[:customer_id].nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

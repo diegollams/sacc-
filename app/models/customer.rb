@@ -27,8 +27,13 @@ class Customer < ActiveRecord::Base
       customer.(self, :id, :first_name, :middle_name, :last_name, :marital_status, :email, :gender, :spouse, :zipcode, :salesman_id,:main_phone,:secondary_phone)
     end
   end
+
   def fullname
     [first_name, middle_name, last_name].join(" ")
+  end
+
+  def appointments_of(date = nil)
+    date.nil? ? appointments : appointments.where(date: date);
   end
 
 end
