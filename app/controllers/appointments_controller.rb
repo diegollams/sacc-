@@ -1,6 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_appointment, only: [:show, :edit, :update, :destroy]
+  before_action :set_appointment, only: [:show, :edit, :update, :cancel, :done, :renew, :destroy]
   before_action :set_customer, only: [:index]
 
   # GET /appointments
@@ -63,6 +63,36 @@ class AppointmentsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @appointment.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  # PATCH/PUT /appointments/1/cancel
+  # PATCH/PUT /appointments/1/cancel.json
+  def cancel
+    @appointment.canceled!
+    respond_to do |format|
+      format.js { render :action => "action" }
+      format.json
+    end
+  end
+
+  # PATCH/PUT /appointments/1/done
+  # PATCH/PUT /appointments/1/done.json
+  def done
+    @appointment.done!
+    respond_to do |format|
+      format.js { render :action => "action" }
+      format.json
+    end
+  end
+
+  # PATCH/PUT /appointments/1/renew
+  # PATCH/PUT /appointments/1/renew.json
+  def renew
+    @appointment.upcoming!
+    respond_to do |format|
+      format.js { render :action => "action" }
+      format.json
     end
   end
 

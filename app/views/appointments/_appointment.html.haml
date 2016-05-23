@@ -1,24 +1,27 @@
-%li.clearfix
-  .chat-body.clearfix
-    .header
-      = link_to appointment.customer.fullname, appointment.customer
-      %small.pull-right.text-muted
-        %i.fa.fa-clock-o.fa-fw
-        = time_distance_to_now appointment
-    .header
-      - if (appointment.date - Date.today) >= 0
-        = t "appointments.you_will_see", time: l(appointment.time, format: :human_time), in: t('appointments.in'), place: appointment.place
-      - else
-        = t "appointments.you_saw", time: l(appointment.time, format: :human_time), in: t('appointments.in'), place: appointment.place
-      .pull-right
-        - if appointment.passed? && appointment.upcoming?
-          = link_to t('helpers.cancel'), "www.google.com", class: 'btn btn-outline btn-danger btn-sm'
-          = link_to t('helpers.done'), "www.google.com", class: 'btn btn-outline btn-success btn-sm'
-        - if !appointment.passed? && appointment.upcoming?
-          = link_to t('helpers.cancel'), "www.google.com", class: 'btn btn-outline btn-danger btn-sm'
-        - if !appointment.passed? && appointment.canceled?
-          = link_to t('helpers.renew'), "www.google.com", class: 'btn btn-outline btn-warning btn-sm'
-        - if appointment.done?
-          = link_to t('helpers.cancel'), "www.google.com", class: 'btn btn-outline btn-danger btn-sm'
-          .btn-circle.btn-success
-            %i.fa.fa-check
+%div{id: "appointment-#{appointment.id}"}
+  %li.clearfix
+    .chat-body.clearfix
+      .header
+        = link_to appointment.customer.fullname, appointment.customer
+        %small.pull-right.text-muted
+          %i.fa.fa-clock-o.fa-fw
+          = time_distance_to_now appointment
+      .header
+        - if (appointment.date - Date.today) >= 0
+          = t "appointments.you_will_see", time: l(appointment.time, format: :human_time), in: t('appointments.in'), place: appointment.place
+        - else
+          = t "appointments.you_saw", time: l(appointment.time, format: :human_time), in: t('appointments.in'), place: appointment.place
+        .pull-right
+          - if appointment.passed? && appointment.upcoming?
+            = link_to t('helpers.cancel'), cancel_appointment_path(appointment), remote: true, method: :patch, class: 'btn btn-outline btn-danger btn-sm'
+            = link_to t('helpers.done'), done_appointment_path(appointment), remote: true, method: :patch, class: 'btn btn-outline btn-success btn-sm'
+          - if !appointment.passed? && appointment.upcoming?
+            = link_to t('helpers.cancel'), cancel_appointment_path(appointment), remote: true, method: :patch, class: 'btn btn-outline btn-danger btn-sm'
+          - if !appointment.passed? && appointment.canceled?
+            = link_to t('helpers.renew'), renew_appointment_path(appointment), remote: true, method: :patch, class: 'btn btn-outline btn-warning btn-sm'
+          - if appointment.done?
+            .btn-circle.btn-success
+              %i.fa.fa-check
+          - if appointment.passed? && appointment.canceled?
+            .btn-circle.btn-danger
+              %i.fa.fa-times
