@@ -1,5 +1,10 @@
+%h3
+  %i.fa.fa-calendar.fa-fw
+  = (t 'appointments.appointment', count: "other").humanize
 = month_calendar events: @appointments do |date, appointments|
-  %p.empty-day
-    = date.day
   - if !appointments.empty?
-    = button_to appointments.count.to_s + ' ' + t('appointments.appointment', count: appointments.count), {action: '/appointments', method: :get, remote: true}, {class: 'btn btn-small'}
+    = button_to date.day, {controller: 'users', action: 'appointments', id: current_user.id, date: date}, method: 'get', remote: true
+  -else
+    %p.empty-day
+      = date.day
+#appointments-list

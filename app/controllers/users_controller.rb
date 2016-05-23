@@ -1,13 +1,22 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :appointments, :edit, :update, :destroy]
 
   def index
     @users = User.all
   end
 
   def show
+  end
+
+  def appointments
+    @appointments = @user.appointments
+    respond_to do |format|
+      format.html
+      format.js
+      format.json
+    end
   end
 
   def new

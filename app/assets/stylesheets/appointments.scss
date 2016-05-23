@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.table-calendar
+{
+  border-style: solid;
+  border-color: #eeeeee;
+  border-width: 2px;
+}
+
 .simple-calendar {
   .day {
     background-color: #fffefb;
