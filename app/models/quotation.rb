@@ -12,7 +12,7 @@ class Quotation < ActiveRecord::Base
   #-- Class Methods / Scopes
   default_scope {order('created_at DESC')}
   scope :from_customer , ->(customer_id) {where( customer_id: customer_id).order(created_at: :asc)}
-  scope :from_month, ->(date) {where(created_at: date.beginning_of_month..date.end_of_month)}
+  scope :from_month, ->( date) {where(created_at: date.beginning_of_month..date.end_of_month)}
   after_create :generate_interaction
   #-- Instance Methods
   def  validate_counteroffer
@@ -24,8 +24,9 @@ class Quotation < ActiveRecord::Base
   end
 
   def generate_interaction
-    observations = "-Precio terreno: #{full_price} -Precio con descuento: #{counteroffer_price} -Metros: #{square_meters} -Precio por metro: #{unit_price}"
-    Interaction.create(kind: :quotation,date: Date.today,time: Time.now, customer: customer,observation: observations)
+    # should I include number_to_currency helper to generate de message? atte llamas
+    observations = I18n.t 'quotations.interaction_observation', full_price: full_price, counteroffer_price: counteroffer_price, square_meters: square_meters, unit_price: unit_price
+    Interaction.create(kind: :quotation, date: Date.today, time: Time.now, customer: customer, observation: observations)
   end
 
   def full_price

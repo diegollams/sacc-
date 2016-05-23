@@ -18,7 +18,9 @@ var LabelInput = React.createClass({
         onChange: React.PropTypes.func.isRequired,
         placeholder: React.PropTypes.string,
         disable: React.PropTypes.bool,
-        value: React.PropTypes.string,
+        value: React.PropTypes.oneOfType([
+                React.PropTypes.string,
+                React.PropTypes.number]),
         label: React.PropTypes.string,
         addon: React.PropTypes.string,
     },
