@@ -21,8 +21,7 @@ class User < ActiveRecord::Base
   #################### Class Methods / Scopes #####################
 
   def self.most_proactive
-    sm = User.includes(:interactions).salesmen.sort{ |x, y| x.interactions.count <=> y.interactions.count}
-    sm.first
+    includes(:interactions).salesmen.sort{ |x, y| x.interactions.count <=> y.interactions.count}.first
   end
 
   ####################### Instance Methods ########################

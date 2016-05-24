@@ -21,7 +21,7 @@
             Settings
         %li.divider
         %li
-          = link_to destroy_user_session_path, method: :delete  ,data: { toggle: 'tooltip', placement: :bottom }, title: t('sign_out') do
+          = link_to destroy_user_session_path, method: :delete, data: { toggle: 'tooltip', placement: :bottom }, title: t('sign_out') do
             %i{class: 'fa fa-sign-out fa-fw'}
             Logout
   = render partial: 'common/sidebar'

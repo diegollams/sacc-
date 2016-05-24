@@ -1,13 +1,14 @@
 %tr
-  %td= customer.fullname
-  %td= customer.gender
-  %td=l customer.created_at,formats: :human_date
+  %td= link_to customer.fullname, customer_path(customer)
+  %td= gender_color(customer.gender)
+  %td=l customer.created_at, formats: :human_date
   %td= customer.appointments.count
   %td= customer.interactions.count
   %td
     - if current_user.is_my_customer? customer
-      = link_to t('.show', :default => t("helpers.links.show")), customer_path(customer), :class => 'btn btn-primary btn-xs'
-      = link_to t('.edit', :default => t("helpers.links.edit")), edit_customer_path(customer), :class => 'btn btn-default btn-xs'
-      = link_to t('.destroy', :default => t("helpers.links.destroy")), customer_path(customer), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+      = circle_button customer_path(customer), 'eye', 'default', 'Show'
+      = circle_button edit_customer_path(customer), 'pencil', 'info', 'Edit'
+      = link_to customer_path(customer), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger btn-circle', data: { toggle: 'tooltip', placement: :bottom }, title: 'Delete' do
+        %i{class: 'fa fa-trash fa-fw'}
     - else
       = "Vendedor: #{customer.salesman.name}"

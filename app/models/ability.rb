@@ -13,6 +13,7 @@ class Ability
       can :manage, Lot
       can [:read, :create], Quotation
       can :manage, Interaction
+      # Appointment management
     end
   end
 end
