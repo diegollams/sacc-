@@ -19,12 +19,12 @@ module ApplicationHelper
 
   def gender_color(gender)
     # do not judge me
-    g = gender || 'exclamation-triangle'
-    content_tag :i, '', class: "fa fa-#{g} fa-fw", style: "color: #{g == 'male' ? 'LightSkyBlue' : 'Pink'};"
+    g = gender || 'genderless'
+    content_tag :i, '', class: "fa fa-#{g} fa-fw", style: "color: #{g == 'female' ? 'Pink' : 'LightSkyBlue'};"
   end
 
-  def circle_button(path = '#not_set', icon = 'exclamation-triangle', type = 'default', title = nil)
-    link_to(path, class: "btn btn-#{type} btn-circle", data: { toggle: 'tooltip', placement: :bottom }, title: title) do
+  def circle_button(path = '#not_set', icon = 'exclamation-triangle', type = 'default', tooltip = nil)
+    link_to(path, class: "btn btn-#{type} btn-circle", data: { toggle: 'tooltip', placement: :bottom }, title: tooltip) do
       content_tag(:i, '', class: "fa fa-#{icon} fa-fw")
     end
       # Text label not cool
@@ -37,6 +37,6 @@ module ApplicationHelper
   end
 
   # delete button, for reference until fixed
-  # = link_to customer_path(customer), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger btn-circle', data: { toggle: 'tooltip', placement: :bottom }, title: 'Delete' do
+  # = link_to model_path(model), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger btn-circle', data: { toggle: 'tooltip', placement: :bottom }, title: t('.destroy', default: t("helpers.links.destroy")) do
   #   %i{class: 'fa fa-trash fa-fw'}
 end
