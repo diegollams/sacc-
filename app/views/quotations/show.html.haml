@@ -1,7 +1,7 @@
 - model_class = Quotation
 
 .page-header
-  %h1=t '.title', default: model_class.model_name.human.titleize
+  %h1=t '.title', default: model_class.header_name
 =render partial: 'quotation',locals: {quotation: @quotation,size: 'col-md-12'}
 
 

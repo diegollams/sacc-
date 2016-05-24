@@ -1,4 +1,6 @@
 class Quotation < ActiveRecord::Base
+  #-- Includes
+  extend Decorator
   #-- Validations
   validates :unit_price, :square_meters, :customer_id, :counteroffer, presence: true
   validate :validate_counteroffer

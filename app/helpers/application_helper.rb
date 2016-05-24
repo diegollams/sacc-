@@ -16,4 +16,11 @@ module ApplicationHelper
       [icn, lbl].join.html_safe
     end
   end
+
+  def pluralize_without_count(count, noun, text = nil) # to be tested, the 0 case is not correct
+    if count != 0
+      count == 1 ? "an #{noun}#{text}" : "#{noun.pluralize}#{text}"
+    end
+  end
+
 end

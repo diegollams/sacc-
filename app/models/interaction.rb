@@ -1,4 +1,6 @@
 class Interaction < ActiveRecord::Base
+  #-- Includes
+  extend Decorator
   #-- Active Relations
   belongs_to :customer
 

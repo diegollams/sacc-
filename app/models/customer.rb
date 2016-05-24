@@ -1,5 +1,6 @@
 class Customer < ActiveRecord::Base
-
+  #-- Includes
+  extend Decorator
   ######################### Validations ##########################
   validates :first_name,:middle_name,:gender,:salesman_id,presence: true
 

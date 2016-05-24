@@ -1,4 +1,6 @@
 class Appointment < ActiveRecord::Base
+  #-- Includes
+  extend Decorator
 ######################### Validations ##########################
     validates :customer_id, :date, :time, :place, presence: true
     enum status: { upcoming: "upcoming", canceled: "canceled", done: "done" }
