@@ -37,6 +37,6 @@ module ApplicationHelper
   end
 
   # delete button, for reference until fixed
-  # = link_to model_path(model), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger btn-circle', data: { toggle: 'tooltip', placement: :bottom }, title: t('.destroy', default: t("helpers.links.destroy")) do
+  # = link_to model_path(model), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')), toggle: 'tooltip', placement: :bottom }, title: t('.destroy', default: t("helpers.links.destroy")), class: 'btn btn-danger btn-circle' do
   #   %i{class: 'fa fa-trash fa-fw'}
 end
