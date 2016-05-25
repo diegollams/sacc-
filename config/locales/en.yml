@@ -72,6 +72,9 @@ en:
     with: "with"
     you_will_see: "You will see this client at %{time}, %{in} %{place}."
     you_saw: "The appointment took place at %{time}, %{in} %{place}."
+    appointment_was_canceled: "The appointment in %{place} for %{date} at %{time} was canceled."
+    appointment_was_renewed: "The appointment in %{place} for %{date} at %{time} was renewed."
+    appointment_was_done: "The appointment in %{place} for %{date} at %{time} was succesfull."
     in: "in"
   quotations:
     interaction_observation: "-Full price: %{full_price} -Counteroffer price: %{counteroffer_price} -Square_meters: %{square_meters} -Unit price: %{unit_price}"

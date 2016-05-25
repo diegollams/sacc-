@@ -5,6 +5,8 @@ class Appointment < ActiveRecord::Base
     validates :customer_id, :date, :time, :place, presence: true
     enum status: { upcoming: "upcoming", canceled: "canceled", done: "done" }
 
+    after_update :process_change
+
 ####################### Active Relations ########################
     belongs_to :customer
     has_one :user, through: :customer
@@ -25,5 +27,21 @@ class Appointment < ActiveRecord::Base
     def passed?
         date <= Date.today && time.seconds_since_midnight <= Time.now.seconds_since_midnight
     end
+
+    def process_change
+        if status_changed?
+            if canceled?
+                observations = I18n.t 'appointments.appointment_was_canceled', date: I18n.l(date, format: :human_date), time: I18n.l(time, format: :human_time), place: place
+            end
+            if upcoming?
+                observations = I18n.t 'appointments.appointment_was_renewed', date: I18n.l(date, format: :human_date), time: I18n.l(time, format: :human_time), place: place
+            end
+            if done?
+                observations = I18n.t 'appointments.appointment_was_done', date: I18n.l(date, format: :human_date), time: I18n.l(time, format: :human_time), place: place
+            end
+            Interaction.create(kind: :quotation, date: Date.today, time: Time.now, customer: customer, observation: observations)
+        end
+    end
+
 
 end
