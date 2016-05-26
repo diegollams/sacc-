@@ -5,6 +5,7 @@ class Appointment < ActiveRecord::Base
     validates :customer_id, :date, :time, :place, presence: true
     enum status: { upcoming: "upcoming", canceled: "canceled", done: "done" }
 
+    after_create :check_creation
     after_update :process_change
 
 ####################### Active Relations ########################
@@ -12,7 +13,7 @@ class Appointment < ActiveRecord::Base
     has_one :user, through: :customer
 
 #################### Class Methods / Scopes #####################
-    scope :from_customer, ->(customer) {where( customer_id: customer.id).order(date: :asc, time: :asc)}
+    scope :from_customer, ->(customer, status) {where( customer_id: customer.id, status: status).order(date: :asc, time: :asc)}
     scope :same_date, ->(date) {where(date: date)}
     scope :after_date, ->(date) {where('date > ?', date)}
     scope :before_date, ->(date) {where('date < ?', date)}
@@ -43,5 +44,9 @@ class Appointment < ActiveRecord::Base
         end
     end
 
+    def check_creation
+        observations = I18n.t 'appointments.appointment_was_created', date: I18n.l(date, format: :human_date), time: I18n.l(time, format: :human_time), place: place
+        Interaction.create(kind: :quotation, date: Date.today, time: Time.now, customer: customer, observation: observations)
+    end
 
 end
