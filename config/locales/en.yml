@@ -61,6 +61,9 @@ en:
       other: "appointments"
     status:
       upcoming: "Upcoming"
+      canceled: "Canceled"
+      done: "Done"
+      missed: "Missed"
     new:
       message: "New appointment"
     index:
@@ -75,6 +78,10 @@ en:
     appointment_was_canceled: "The appointment in %{place} for %{date} at %{time} was canceled."
     appointment_was_renewed: "The appointment in %{place} for %{date} at %{time} was renewed."
     appointment_was_done: "The appointment in %{place} for %{date} at %{time} was succesfull."
+    appointment_was_created: "An appointment in %{place} for %{date} at %{time} was set."
+    no_appointments_pending: "There are not pending appointments."
+    manage_calendar: "Manage the calendar for this client"
+    check_calendar: "Check the calendar"
     in: "in"
   quotations:
     interaction_observation: "-Full price: %{full_price} -Counteroffer price: %{counteroffer_price} -Square_meters: %{square_meters} -Unit price: %{unit_price}"

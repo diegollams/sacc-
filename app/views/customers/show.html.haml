@@ -17,7 +17,7 @@
   %li.active{role: :presentation}
     = link_to (t 'customers.info'), '#info', role: :tab, aria: {controls: :home}, data: {toggle: :tab}
   %li{role: :presentation}
-    = link_to Appointment.model_name.human, '#appointments', role: :tab, aria: {controls: :profile}, data: {toggle: :tab}
+    = link_to (t 'appointments.appointment', count: "other").humanize, '#appointments', role: :tab, aria: {controls: :profile}, data: {toggle: :tab}
   %li{role: :presentation}
     = link_to Interaction.model_name.human, '#interactions', role: :tab, aria: {controls: :messages}, data: {toggle: :tab}
   %li{role: :presentation}
@@ -25,7 +25,28 @@
 .tab-content
   #info.tab-pane.fade.in.active{role: 'tabpanel'}
   #appointments.tab-pane.fade{role: 'tabpanel'}
-    = link_to t('appointments.index.message'), appointments_path(customer_id: @customer.id), class: 'btn btn-default'
+    .panel-body
+      -if @date_appointments.count == 0
+        .text-center.text-muted
+          = t 'appointments.no_appointments_pending'
+      %ul.chat
+        - @date_appointments.each do |appointment|
+          %li.clearfix
+            .chat-body.clearfix
+              .header
+                = appointment.passed? ? t('appointments.status.missed') + ' (' +t('appointments.check_calendar') + ')' : t('appointments.status.upcoming')
+                %small.pull-right.text-muted
+                  %i.fa.fa-clock-o.fa-fw
+                  = time_distance_to_now appointment
+              .header
+                - if !appointment.passed?
+                  = t "appointments.you_will_see", time: l(appointment.time, format: :human_time), in: t('appointments.in'), place: appointment.place
+                - else
+                  = t "appointments.you_saw", time: l(appointment.time, format: :human_time), in: t('appointments.in'), place: appointment.place
+    .text-center
+      = link_to appointments_path(customer_id: @customer.id), class: 'btn-outline btn-info btn' do
+        %span.fa.fa-calendar
+        = t('appointments.manage_calendar')
   #interactions.tab-pane.fade{role: 'tabpanel'}
     = render partial: 'interactions/interactions', locals: {interactions: @customer.interactions}
   #quotations.tab-pane.fade{role: 'tabpanel'}
@@ -35,6 +56,7 @@
           = t('quotations.index.empty')
       - else
         = render @customer.quotations
+%br
 = link_to t('.back', default: t('helpers.links.back')), request.referrer, class: 'btn btn-default'
 = link_to t('.edit', default: t('helpers.links.edit')), edit_customer_path(@customer), class: 'btn btn-default'
 = link_to t('.destroy', default: t('helpers.links.destroy')), customer_path(@customer), method: 'delete', data: { confirm: t('.confirm', default: t('helpers.links.confirm', default: 'Are you sure?')) }, class: 'btn btn-danger'

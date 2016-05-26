@@ -13,6 +13,7 @@ class CustomersController < ApplicationController
   end
 
   def show
+    @date_appointments = Appointment.from_customer @customer, :upcoming
   end
 
   def new
