@@ -31,13 +31,12 @@ class Appointment < ActiveRecord::Base
 
     def process_change
         if status_changed?
-            if canceled?
+            case status
+            when Appointment.statuses[:canceled] 
                 observations = I18n.t 'appointments.appointment_was_canceled', date: I18n.l(date, format: :human_date), time: I18n.l(time, format: :human_time), place: place
-            end
-            if upcoming?
+            when Appointment.statuses[:upcoming] 
                 observations = I18n.t 'appointments.appointment_was_renewed', date: I18n.l(date, format: :human_date), time: I18n.l(time, format: :human_time), place: place
-            end
-            if done?
+            when Appointment.statuses[:done] 
                 observations = I18n.t 'appointments.appointment_was_done', date: I18n.l(date, format: :human_date), time: I18n.l(time, format: :human_time), place: place
             end
             Interaction.create(kind: :quotation, date: Date.today, time: Time.now, customer: customer, observation: observations)
