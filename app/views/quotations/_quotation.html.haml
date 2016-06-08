@@ -23,9 +23,9 @@
           %br
           = quotation.lot.to_s
         %p
-          %strong= model_class.human_attribute_name(:counteroffer) + ':'
+          %strong= model_class.human_attribute_name(:offer) + ':'
           %br
-          = "%#{quotation.counteroffer}"
+          = quotation.try(:offer) || 'No cuenta'
         %p
           %strong= model_class.human_attribute_name(:full_price) + ':'
           %br

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  expiration: 2016-06-08
+  percentage: 9.99
+  observations: MyText
+
+two:
+  name: MyString
+  expiration: 2016-06-08
+  percentage: 9.99
+  observations: MyText

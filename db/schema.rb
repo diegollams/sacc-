@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427133456) do
+ActiveRecord::Schema.define(version: 20160608155529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,18 +71,28 @@ ActiveRecord::Schema.define(version: 20160427133456) do
     t.datetime "updated_at",                        null: false
   end
 
+  create_table "offers", force: :cascade do |t|
+    t.string   "name"
+    t.date     "expiration"
+    t.decimal  "percentage"
+    t.text     "observations"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "quotations", force: :cascade do |t|
     t.integer  "customer_id"
     t.integer  "lot_id"
     t.decimal  "square_meters"
     t.decimal  "unit_price"
-    t.decimal  "counteroffer",  default: 0.0
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "offer_id"
   end
 
   add_index "quotations", ["customer_id"], name: "index_quotations_on_customer_id", using: :btree
   add_index "quotations", ["lot_id"], name: "index_quotations_on_lot_id", using: :btree
+  add_index "quotations", ["offer_id"], name: "index_quotations_on_offer_id", using: :btree
 
   create_table "royce_connector", force: :cascade do |t|
     t.integer  "roleable_id",   null: false
@@ -132,4 +142,5 @@ ActiveRecord::Schema.define(version: 20160427133456) do
   add_foreign_key "interactions", "customers"
   add_foreign_key "quotations", "customers"
   add_foreign_key "quotations", "lots"
+  add_foreign_key "quotations", "offers"
 end

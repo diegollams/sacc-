@@ -3,6 +3,6 @@
   = f.input :lot_id,collection: Lot.all.collect { |lot| [lot.to_s,lot.id]}
   = f.input :square_meters
   = f.input :unit_price
-  = f.input :counteroffer,placeholder: t('quotations.form.counteroffer_input')
+  = f.input :offer_id, collection: Offer.actives(Date.today).collect { |offer| [offer.to_s,offer.id ]}
   = f.button :submit, :class => 'btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), request.referrer, :class => 'btn btn-default'

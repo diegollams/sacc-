@@ -2,9 +2,10 @@ class Quotation < ActiveRecord::Base
   #-- Includes
   extend Decorator
   #-- Validations
-  validates :unit_price, :square_meters, :customer_id, :counteroffer, presence: true
-  validate :validate_counteroffer
+  validates :unit_price, :square_meters, :customer_id, presence: true
+
   #-- Active Relations
+  belongs_to :offer
   belongs_to :customer
   belongs_to :lot
   has_one :salesman, through: :customer
@@ -16,14 +17,7 @@ class Quotation < ActiveRecord::Base
   scope :from_customer , ->(customer_id) {where( customer_id: customer_id).order(created_at: :asc)}
   scope :from_month, ->( date) {where(created_at: date.beginning_of_month..date.end_of_month)}
   after_create :generate_interaction
-  #-- Instance Methods
-  def  validate_counteroffer
-    case counteroffer
-    when (0..100)
-    else
-      errors.add(:counteroffer, 'must be between 0 and 100')
-    end
-  end
+
 
   def generate_interaction
     # should I include number_to_currency helper to generate de message? atte llamas
@@ -36,6 +30,7 @@ class Quotation < ActiveRecord::Base
   end
 
   def counteroffer_price
+    counteroffer = try(:offer).try(:percentage) || 0
     (full_price * (100 - counteroffer)) / 100
   end
 

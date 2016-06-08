@@ -1,10 +1,10 @@
 class Customer < ActiveRecord::Base
   #-- Includes
   extend Decorator
-  ######################### Validations ##########################
+  #-- Validations
   validates :first_name,:middle_name,:gender,:salesman_id,presence: true
 
-  ####################### Active Relations ########################
+  #-- Active Relations
   belongs_to :salesman, :class_name => "User", :foreign_key => "salesman_id"
   has_many :interactions
   has_many :appointments
@@ -13,7 +13,7 @@ class Customer < ActiveRecord::Base
   enum gender: [ :male, :female ]
 
   delegate :name, to: :salesman, prefix: true, allow_nil: true
-  #################### Class Methods / Scopes #####################
+  #-- Class Methods / Scopes
   scope :from_month, ->(date) {where(created_at: date.beginning_of_month..date.end_of_month)}
   scope :search , ->(search){
       if search.blank?
@@ -22,7 +22,7 @@ class Customer < ActiveRecord::Base
         includes(:appointments,:interactions).where('(customers.first_name || \' \' || customers.middle_name || \' \' || customers.last_name) ILIKE ? or spouse ILIKE ?', "%#{search}%", "%#{search}%")
       end
   }
-  ####################### Instance Methods ########################
+  #--- Instance Methods
   def to_builder
     Jbuilder.new do |customer|
       customer.register_date created_at.strftime(I18n.t('date.formats.human_date'))
