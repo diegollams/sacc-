@@ -7,7 +7,7 @@
   = render partial: 'common/panel',locals: {message: t('customers.index.this_month'), heading:  @customers.from_month(Time.now).count, favicon: 'users',class_color: 'primary', link: customers_path}
   = render partial: 'common/panel',locals: {message: t('quotations.index.this_month'), heading:  @quotations.from_month(Time.now).count, favicon: 'usd',class_color: 'green', link: quotations_path}
   = render partial: 'common/panel',locals: {message: t('appointments.index.this_month'), heading:  @appointments.from_month(Time.now).count, favicon: 'clock-o',class_color: 'yellow', link: appointments_path}
-  = render partial: 'common/panel',locals: {message: t('interactions.index.this_month'), heading:  @interactions.from_month(Time.now).count, favicon: 'comment',class_color: 'red', link: interactions_path}
+  = render partial: 'common/panel',locals: {message: t('interactions.index.this_month'), heading:  @interactions.from_month(Time.now).count, favicon: 'comments-o',class_color: 'red', link: interactions_path}
 .row
   .col-lg-8
     %ul.nav.nav-tabs{role: :tablist}

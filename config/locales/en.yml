@@ -53,6 +53,7 @@ en:
       count: "Total of interactions"
       all: "All: %{count}"
       this_month: "This month interactions"
+      total: "Total of interactions"
     show:
       message: "Interaction with"
   appointments:

@@ -18,6 +18,9 @@
         -#add a column to display salesman maybe? atte llamas
         %td= link_to interaction.customer.fullname, customer_path(interaction.customer)
         %td
-          = link_to t('.show', :default => t("helpers.links.show")), interaction_path(interaction), :class => 'btn btn-primary btn-xs'
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_interaction_path(interaction,customer_id: interaction.customer_id), :class => 'btn btn-default btn-xs'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), interaction_path(interaction,customer_id: interaction.customer_id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+          = link_to interaction_path(interaction), :class => 'btn btn-primary btn-circle', data: { toggle: 'tooltip', placement: :bottom }, title: 'Show' do
+            %i{class: 'fa fa-eye fa-fw'}
+          = link_to edit_interaction_path(interaction,customer_id: interaction.customer_id), :class => 'btn btn-default btn-circle', data: { toggle: 'tooltip', placement: :bottom }, title: 'Edit' do
+            %i{class: 'fa fa-pencil fa-fw'}
+          = link_to interaction_path(interaction,customer_id: interaction.customer_id), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger btn-circle', data: { toggle: 'tooltip', placement: :bottom }, title: 'Delete' do
+            %i{class: 'fa fa-trash fa-fw'}
