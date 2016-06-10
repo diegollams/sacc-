@@ -14,7 +14,6 @@ class Ability
       can [:read, :create], Quotation
       can :manage, Interaction
       can :read, Offer
-      # Appointment management
     end
   end
 end

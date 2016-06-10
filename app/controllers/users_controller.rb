@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @interactions = @user.interactions
+    @quotations = @user.quotations
   end
 
   def new

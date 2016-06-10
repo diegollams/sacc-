@@ -29,7 +29,7 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/new
   def new
-    @appointment = Appointment.new
+    @appointment = Appointment.new(customer_id: params[:customer_id])
   end
 
   # GET /appointments/1/edit

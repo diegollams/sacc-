@@ -1,8 +1,8 @@
 - model_class = Quotation
 .page-header
   %h1=t '.title', default: model_class.header_name
-= render partial: 'common/panel', locals: {message: t('quotations.index.count'), heading: Quotation.all.count, favicon: 'usd'}
-= render partial: 'common/panel', locals: {message: t('quotations.index.this_month'), heading:  Quotation.from_month(Time.now).count, favicon: 'usd', class_color: 'green'}
+= render partial: 'common/panel', locals: {message: t('quotations.index.count'), heading: Quotation.all.count, favicon: 'usd', class_color: 'green'}
+= render partial: 'common/panel', locals: {message: t('quotations.index.this_month'), heading:  Quotation.from_month(Time.now).count, favicon: 'calendar-check-o', class_color: 'green'}
 
 %table.table.table-striped
   %thead
@@ -25,7 +25,9 @@
         %td= quotation.full_price
         %td= valid ? l(quotation.valid_until,format: :human_date): t('quotations.invalid')
         %td
-          = link_to t('.show',default: t("helpers.links.show")), quotation_path(quotation),class: 'btn btn-primary btn-xs'
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_quotation_path(quotation,customer_id: quotation.customer_id), :class => 'btn btn-default btn-xs'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), quotation_path(quotation), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
 
+          = circle_button quotation_path(quotation), 'eye', 'default', 'Show'
+          = circle_button edit_quotation_path(quotation,customer_id: quotation.customer_id), 'pencil', 'info', 'Edit'
+          = link_to quotation_path(quotation), method: :delete, data: { confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Are you sure?')) }, class: 'btn btn-danger btn-circle', data: { toggle: 'tooltip', placement: :bottom }, title: 'Delete' do
+            %i{class: 'fa fa-trash fa-fw'}
+          

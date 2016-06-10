@@ -2,6 +2,6 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
 = render partial: 'common/panel', locals: {message: t('interactions.index.total'), heading: Interaction.all.count, favicon: 'comments-o' }
-= render partial: 'common/panel', locals: {message: 'Salesman whit more interactions', heading: "#{@most_proactive.name} with #{@most_proactive.interactions.count}", favicon: 'star'}
-= render partial: 'common/panel', locals: {message: 'Interactions on this mont', heading: Interaction.from_month(Date.today).count, favicon: 'calendar-check-o'}
+= render partial: 'common/panel', locals: {message: t('interactions.best_salesman'), heading: "#{@most_proactive.name} with #{@most_proactive.interactions.count}", favicon: 'star'}
+= render partial: 'common/panel', locals: {message: t('interactions.index.this_month'), heading: Interaction.from_month(Date.today).count, favicon: 'calendar-check-o'}
 = render partial: 'interactions', locals: {interactions: @interactions}

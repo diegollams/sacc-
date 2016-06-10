@@ -2,6 +2,6 @@
   = f.input :date
   = f.input :time
   = f.input :place
-  = f.association :customer
+  = f.input :customer_id, as: :hidden
   = f.button :submit, :class => 'btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), request.referrer, :class => 'btn btn-default'

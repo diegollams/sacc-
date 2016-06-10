@@ -2,6 +2,12 @@
 .page-header
   %h1=t '.title', :default => model_class.header_name
 
+.row
+  = render partial: 'common/panel', locals: {message: t('interactions.index.total'), heading: @interactions.count, favicon: 'comments-o' }
+  = render partial: 'common/panel', locals: {message: t('interactions.index.this_month'), heading: @interactions.from_month(Time.now).count, favicon: 'calendar-check-o'}
+  = render partial: 'common/panel', locals: {message: t('quotations.index.count'), heading: @quotations.count, favicon: 'usd', class_color: 'green'}
+  = render partial: 'common/panel', locals: {message: t('quotations.index.this_month'), heading: @quotations.from_month(Time.now).count, favicon: 'calendar-check-o', class_color: 'green'}
+
 %p
   %strong= model_class.human_attribute_name(:name) + ':'
   %br

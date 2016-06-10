@@ -56,6 +56,7 @@ en:
       total: "Total of interactions"
     show:
       message: "Interaction with"
+    best_salesman: "Salesman with more interactions"
   appointments:
     appointment:
       one: "appointment"
@@ -94,7 +95,7 @@ en:
       empty: "None yet."
       count: "Total quotations"
       all: "All: %{count}"
-      this_month: "This month"
+      this_month: "This month quotations."
     invalid: "Invalid quotation"
     form:
       counteroffer_input: "% percentage"
